@@ -22,7 +22,6 @@ def load_obj(filename):
             elif line.startswith('f '):
                 face = [int(part.split('/')[0]) - 1 for part in line.strip().split()[1:]]
                 faces.append(face)
-                
     return vertices, faces
 
 def create_display_list(vertices, faces):
@@ -54,7 +53,6 @@ def display_obj_model(rotation_y_ref, rotation_x_ref):
     pygame.display.set_mode(display, DOUBLEBUF | OPENGL)
     gluPerspective(45, (display[0] / display[1]), 0.1, 50.0)
     glTranslatef(0.0, 0.0, -5)
-
     glClearColor(0, 0, 0, 1)
 
     vertices, faces = load_obj("vhs.obj")
@@ -75,8 +73,8 @@ def display_obj_model(rotation_y_ref, rotation_x_ref):
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
         glPushMatrix()
         
-        glRotatef(rotation_x_ref[0], 1, 0, 0)  # Yukarı-aşağı döndürme
-        glRotatef(rotation_y_ref[0], 0, 1, 0)  # Sağa-sola döndürme
+        glRotatef(rotation_x_ref[0], 1, 0, 0)  
+        glRotatef(rotation_y_ref[0], 0, 1, 0)  
         glCallList(display_list)
         
         glPopMatrix()
