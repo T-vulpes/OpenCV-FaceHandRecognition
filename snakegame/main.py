@@ -1,3 +1,4 @@
+#Please wait for the video to open.
 
 import math
 import random
