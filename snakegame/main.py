@@ -1,3 +1,4 @@
+
 import math
 import random
 import cvzone
@@ -24,7 +25,6 @@ class SnakeGameClass:
         self.hFood, self.wFood, _ = self.imgFood.shape
         self.foodPoint = 0, 0
         self.randomFoodLocation()
-
         self.score = 0
         self.gameOver = False
 
@@ -33,10 +33,8 @@ class SnakeGameClass:
 
     def update(self, imgMain, currentHead):
         if self.gameOver:
-            cvzone.putTextRect(imgMain, "Game Over", [300, 400],
-                               scale=7, thickness=5, offset=20)
-            cvzone.putTextRect(imgMain, f'Your Score: {self.score}', [300, 550],
-                               scale=7, thickness=5, offset=20)
+            cvzone.putTextRect(imgMain, "Game Over", [300, 400],scale=7, thickness=5, offset=20)
+            cvzone.putTextRect(imgMain, f'Your Score: {self.score}', [300, 550],scale=7, thickness=5, offset=20)
         else:
             px, py = self.previousHead
             cx, cy = currentHead
@@ -71,11 +69,9 @@ class SnakeGameClass:
             if self.points:
                 cv2.circle(imgMain, self.points[-1], 20, (0, 255, 255), cv2.FILLED)  # Sarı baş noktası
 
-            imgMain = cvzone.overlayPNG(imgMain, self.imgFood,
-                                        (rx - self.wFood // 2, ry - self.hFood // 2))
+            imgMain = cvzone.overlayPNG(imgMain, self.imgFood,(rx - self.wFood // 2, ry - self.hFood // 2))
 
-            cvzone.putTextRect(imgMain, f'Score: {self.score}', [50, 80],
-                               scale=3, thickness=3, offset=10)
+            cvzone.putTextRect(imgMain, f'Score: {self.score}', [50, 80],scale=3, thickness=3, offset=10)
 
             pts = np.array(self.points[:-2], np.int32)
             pts = pts.reshape((-1, 1, 2))
