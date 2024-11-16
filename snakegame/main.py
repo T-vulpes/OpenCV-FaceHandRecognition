@@ -108,7 +108,7 @@ while True:
 
     if hands:
         lmList = hands[0]['lmList']
-        pointIndex = lmList[8][0:2]  # İşaret parmağı koordinatları
+        pointIndex = lmList[8][0:2]  
         x, y = pointIndex
 
         if not game_started and start_button_x < x < start_button_x + button_w and start_button_y < y < start_button_y + button_h:
