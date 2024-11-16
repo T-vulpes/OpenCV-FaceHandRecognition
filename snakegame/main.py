@@ -68,7 +68,7 @@ class SnakeGameClass:
                 cv2.line(imgMain, self.points[i], self.points[i + 1], (r, g, b), 20)
 
             if self.points:
-                cv2.circle(imgMain, self.points[-1], 20, (0, 255, 255), cv2.FILLED)  # Sarı baş noktası
+                cv2.circle(imgMain, self.points[-1], 20, (0, 255, 255), cv2.FILLED) 
 
             imgMain = cvzone.overlayPNG(imgMain, self.imgFood,(rx - self.wFood // 2, ry - self.hFood // 2))
 
@@ -89,8 +89,6 @@ class SnakeGameClass:
                 self.randomFoodLocation()
 
         return imgMain
-
-
 
 game = SnakeGameClass("apple.png")
 game_started = False  
