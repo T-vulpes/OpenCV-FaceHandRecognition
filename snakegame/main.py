@@ -13,15 +13,14 @@ detector = HandDetector(detectionCon=0.8, maxHands=1)
 
 class SnakeGameClass:
     def __init__(self, pathFood):
-        self.points = []  # all points of the snake
-        self.lengths = []  # distance between each point
-        self.currentLength = 0  # total length of the snake
-        self.allowedLength = 150  # total allowed Length
-        self.previousHead = 0, 0  # previous head point
+        self.points = [] 
+        self.lengths = []  
+        self.currentLength = 0  
+        self.allowedLength = 150  
+        self.previousHead = 0, 0  
 
-        # Donut.png görselini daha küçük boyutlarda yükleme
         self.imgFood = cv2.imread(pathFood, cv2.IMREAD_UNCHANGED)
-        self.imgFood = cv2.resize(self.imgFood, (70, 70))  # Görseli küçültme
+        self.imgFood = cv2.resize(self.imgFood, (70, 70))  
         self.hFood, self.wFood, _ = self.imgFood.shape
         self.foodPoint = 0, 0
         self.randomFoodLocation()
@@ -48,7 +47,6 @@ class SnakeGameClass:
             self.currentLength += distance
             self.previousHead = cx, cy
 
-            # Length Reduction
             if self.currentLength > self.allowedLength:
                 for i, length in enumerate(self.lengths):
                     self.currentLength -= length
@@ -57,7 +55,6 @@ class SnakeGameClass:
                     if self.currentLength < self.allowedLength:
                         break
 
-            # Check if snake ate the Food
             rx, ry = self.foodPoint
             if rx - self.wFood // 2 < cx < rx + self.wFood // 2 and \
                     ry - self.hFood // 2 < cy < ry + self.hFood // 2:
@@ -65,26 +62,21 @@ class SnakeGameClass:
                 self.allowedLength += 50
                 self.score += 1
 
-            # Draw Snake with gradient colors
             for i in range(len(self.points) - 1):
                 r = int((255 / len(self.points)) * i)
                 g = int((128 / len(self.points)) * (len(self.points) - i))
                 b = 0
                 cv2.line(imgMain, self.points[i], self.points[i + 1], (r, g, b), 20)
 
-            # Draw head if there are points
             if self.points:
                 cv2.circle(imgMain, self.points[-1], 20, (0, 255, 255), cv2.FILLED)  # Sarı baş noktası
 
-            # Draw Food
             imgMain = cvzone.overlayPNG(imgMain, self.imgFood,
                                         (rx - self.wFood // 2, ry - self.hFood // 2))
 
-            # Show Score
             cvzone.putTextRect(imgMain, f'Score: {self.score}', [50, 80],
                                scale=3, thickness=3, offset=10)
 
-            # Check for Collision
             pts = np.array(self.points[:-2], np.int32)
             pts = pts.reshape((-1, 1, 2))
             cv2.polylines(imgMain, [pts], False, (0, 255, 0), 3)
@@ -119,17 +111,14 @@ while True:
         cv2.putText(img, "Start", (start_button_x + 20, start_button_y + 50), 
                     cv2.FONT_HERSHEY_SIMPLEX, 1.5, (255, 255, 255), 4)
 
-    # El buton üzerindeyken oyunun başlamasını kontrol et
     if hands:
         lmList = hands[0]['lmList']
         pointIndex = lmList[8][0:2]  # İşaret parmağı koordinatları
         x, y = pointIndex
 
-        # Eğer işaret parmağı "Start" butonunun içindeyse oyunu başlat
         if not game_started and start_button_x < x < start_button_x + button_w and start_button_y < y < start_button_y + button_h:
             game_started = True
 
-        # Oyun başladıysa yılanı kontrol et
         if game_started:
             img = game.update(img, pointIndex)
 
