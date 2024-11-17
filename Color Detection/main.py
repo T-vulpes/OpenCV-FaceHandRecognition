@@ -41,8 +41,6 @@ while True:
 
     frame = cv2.resize(frame, (640, 480))
     hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
-
-    # Trackbar değerlerini alma
     l_h = cv2.getTrackbarPos("L-H", "Trackbars")
     l_s = cv2.getTrackbarPos("L-S", "Trackbars")
     l_v = cv2.getTrackbarPos("L-V", "Trackbars")
