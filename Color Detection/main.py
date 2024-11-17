@@ -18,7 +18,7 @@ def load_settings(settings_file):
 
 cap = cv2.VideoCapture(0)
 if not cap.isOpened():
-    print("Kamera bağlantısı başarısız!")
+    print("Camera connection failed!")
     exit()
 
 cv2.namedWindow("Trackbars")
@@ -36,7 +36,7 @@ cv2.createTrackbar("U-V", "Trackbars", loaded_settings.get("U-V", 255) if loaded
 while True:
     ret, frame = cap.read()
     if not ret:
-        print("Kamera çerçevesi alınamadı!")
+        print("Failed to capture camera frame!")
         break
 
     frame = cv2.resize(frame, (640, 480))
@@ -78,7 +78,7 @@ while True:
             "U-H": u_h, "U-S": u_s, "U-V": u_v
         }
         save_settings(settings_file, current_settings)
-        print("Ayarlar kaydedildi!")
+        print("Settings saved!")
 
 cap.release()
 cv2.destroyAllWindows()
