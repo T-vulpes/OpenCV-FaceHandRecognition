@@ -2,8 +2,6 @@ import cv2
 import numpy as np
 import json
 
-PROJECT_NAME = "Color Detection and Tracking Tool"
-
 def nothing(x):
     pass
 
