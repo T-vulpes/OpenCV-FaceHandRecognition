@@ -50,7 +50,7 @@ def main():
     cap = cv2.VideoCapture(video_path)
 
     if not cap.isOpened():
-        print("Video açılamadı!")
+        print("The video could not be opened!")
         return
 
     fps = cap.get(cv2.CAP_PROP_FPS)
@@ -61,7 +61,7 @@ def main():
             break
 
         processed_frame = process_frame(frame)
-        cv2.imshow('Şerit Takip', processed_frame)
+        cv2.imshow('Lane tracking', processed_frame)
 
         if cv2.waitKey(int(1000 / fps)) & 0xFF == ord('q'):
             break
