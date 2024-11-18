@@ -2,18 +2,12 @@ import cv2
 import numpy as np
 
 def region_of_interest(img, vertices):
-    """
-    Görüntünün yalnızca belirli bir bölgesini tutar.
-    """
     mask = np.zeros_like(img)
     match_mask_color = 255
     cv2.fillPoly(mask, vertices, match_mask_color)
     return cv2.bitwise_and(img, mask)
 
 def draw_lines(img, lines):
-    """
-    Algılanan çizgileri görüntüye çizer.
-    """
     img = np.copy(img)
     blank_image = np.zeros((img.shape[0], img.shape[1], 3), dtype=np.uint8)
 
@@ -25,12 +19,7 @@ def draw_lines(img, lines):
     return cv2.addWeighted(img, 0.8, blank_image, 1, 0.0)
 
 def process_frame(frame):
-    """
-    Tek bir kare üzerinde şerit algılama işlemini gerçekleştirir.
-    """
     height, width = frame.shape[:2]
-    
-    # ROI (Region of Interest) tanımlaması
     region_of_interest_vertices = [
         (0, height),
         (width // 2 - 50, height // 2 + 50),
