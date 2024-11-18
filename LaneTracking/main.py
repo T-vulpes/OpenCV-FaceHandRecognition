@@ -46,7 +46,7 @@ def process_frame(frame):
     return final_frame
 
 def main():
-    video_path = 'road3.mp4'
+    video_path = 'road.mp4'
     cap = cv2.VideoCapture(video_path)
 
     if not cap.isOpened():
