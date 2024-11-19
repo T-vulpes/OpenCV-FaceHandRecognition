@@ -27,10 +27,10 @@ volBar = 400
 volPer = 0
 
 while True:
-    success, img = cap.read()  # Kameradan görüntü al
+    success, img = cap.read() 
     
     if not success:
-        print("Kameradan görüntü alınamıyor!")
+        print("Cannot get image from camera!")
         continue
 
     img = detector.findHands(img)
