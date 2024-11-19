@@ -4,13 +4,10 @@ import numpy as np
 import modelfin as htm
 import math
 from ctypes import cast, POINTER
-from comtypes import CLSCTX_ALL  # Doğru modül adı
+from comtypes import CLSCTX_ALL 
 from pycaw.pycaw import AudioUtilities, IAudioEndpointVolume
 
-# Kamera çözünürlüğü
 wcam, hcam = 640, 480
-
-# Kamera ayarları
 cap = cv2.VideoCapture(0)
 cap.set(3, wcam)  # Genişlik
 cap.set(4, hcam)  # Yükseklik
@@ -18,13 +15,13 @@ pTime = 0
 
 detector = htm.handDetector(detectionCon=0.7)
 
-devices = AudioUtilities.GetSpeakers()  # Hoparlörü algıla
+devices = AudioUtilities.GetSpeakers() 
 interface = devices.Activate(IAudioEndpointVolume._iid_, CLSCTX_ALL, None)
 volume = cast(interface, POINTER(IAudioEndpointVolume))
 
 volRange = volume.GetVolumeRange()
-minVol = volRange[0]  # Minimum ses seviyesi
-maxVol = volRange[1]  # Maksimum ses seviyesi
+minVol = volRange[0]  
+maxVol = volRange[1]  
 
 volBar = 400
 volPer = 0
