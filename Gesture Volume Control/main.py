@@ -9,8 +9,8 @@ from pycaw.pycaw import AudioUtilities, IAudioEndpointVolume
 
 wcam, hcam = 640, 480
 cap = cv2.VideoCapture(0)
-cap.set(3, wcam)  # Genişlik
-cap.set(4, hcam)  # Yükseklik
+cap.set(3, wcam) 
+cap.set(4, hcam)  
 pTime = 0
 
 detector = htm.handDetector(detectionCon=0.7)
@@ -33,7 +33,6 @@ while True:
         print("Kameradan görüntü alınamıyor!")
         continue
 
-    # Elleri algıla ve pozisyonları bul
     img = detector.findHands(img)
     lmList = detector.findPosition(img, draw=False)
     
@@ -59,14 +58,9 @@ while True:
     cTime = time.time()
     fps = 1 / (cTime - pTime)
     pTime = cTime
-
-    # FPS ekrana yazdır
     cv2.putText(img, f'FPS: {int(fps)}', (40, 50), cv2.FONT_HERSHEY_COMPLEX, 1, (255, 0, 0), 3)
-
-    # Görüntüyü göster
     cv2.imshow("Image", img)
 
-    # Çıkış için 'q' tuşuna bas
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
 
