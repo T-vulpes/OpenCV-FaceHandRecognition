@@ -1,6 +1,8 @@
+#!Wait 1-2 minutes for the image to appear on the screen.!
 # The project tracks the tips of your thumb and index finger.
 #   - Increase Volume: Move your thumb and index finger farther apart.
 #   - Decrease Volume: Bring your thumb and index finger closer together.
+
 import cv2
 import time
 import numpy as np
