@@ -1,3 +1,5 @@
+#Real-time object detection using the YOLOv4-tiny model.
+#Interactive buttons to toggle detection of specific objects (e.g., person, cell phone, cup).
 import cv2
 import numpy as np
 from gui_buttons import Buttons
