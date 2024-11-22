@@ -37,7 +37,7 @@ cv2.setMouseCallback("Frame", click_button)
 while True:
     ret, frame = cap.read()
     if not ret:
-        print("Kamera görüntüsü alınamadı!")
+        print("Could not get camera image!")
         break
 
     active_buttons = button.active_buttons_list()
