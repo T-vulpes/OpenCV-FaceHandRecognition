@@ -32,12 +32,11 @@ class Buttons:
             (x, y, right_x, bottom_y) = button_value["position"]
             active = button_value["active"]
 
-            # Determine colors based on active state
             button_color = self.colors["active"] if active else self.colors["inactive"]
             text_color = self.text_colors["active"] if active else self.text_colors["inactive"]
             border_color = self.colors["border"]
-            cv2.rectangle(frame, (x, y), (right_x, bottom_y), border_color, 2)  # Border
-            cv2.rectangle(frame, (x + 2, y + 2), (right_x - 2, bottom_y - 2), button_color, -1)  # Inner fill
+            cv2.rectangle(frame, (x, y), (right_x, bottom_y), border_color, 2)  
+            cv2.rectangle(frame, (x + 2, y + 2), (right_x - 2, bottom_y - 2), button_color, -1)  
 
             cv2.putText(frame, button_text, (x + self.x_margin, bottom_y - self.y_margin),
                         self.font, self.text_scale, text_color, self.text_thick)
@@ -47,11 +46,8 @@ class Buttons:
         for b_index, button_value in self.buttons.items():
             (x, y, right_x, bottom_y) = button_value["position"]
 
-            # Check if mouse click is within button boundaries
             if x <= mouse_x <= right_x and y <= mouse_y <= bottom_y:
-                # Toggle active state
                 self.buttons[b_index]["active"] = not button_value["active"]
 
     def active_buttons_list(self):
-        # Return a list of active button texts in lowercase
         return [btn["text"].lower() for btn in self.buttons.values() if btn["active"]]
