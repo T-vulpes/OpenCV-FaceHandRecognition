@@ -36,11 +36,11 @@ with mp_hands.Hands(
 
         font = cv2.FONT_HERSHEY_PLAIN
         if y1 > y:
-            cv2.putText(image, "KAPALI", (10, 50), font, 4, (0, 0, 0), 3)
-            arduino.write(b'0')  # Arduino'ya '0' gönder (LED kapalı)
+            cv2.putText(image, "CLOSE", (10, 50), font, 4, (0, 0, 0), 3)
+            arduino.write(b'0') 
         else:
-            cv2.putText(image, "ACIK", (10, 50), font, 4, (0, 0, 0), 3)
-            arduino.write(b'1')  # Arduino'ya '1' gönder (LED açık)
+            cv2.putText(image, "OPEN", (10, 50), font, 4, (0, 0, 0), 3)
+            arduino.write(b'1')  
         
         mp_drawing.draw_landmarks(
             image,
