@@ -1,5 +1,7 @@
  #  - If the hand is open, it sends a `1` to turn the LED ON.
  #  - If the hand is closed, it sends a `0` to turn the LED OFF.
+ #  - Wait a moment for the camera to open.
+
 import cv2
 import mediapipe as mp
 import serial
