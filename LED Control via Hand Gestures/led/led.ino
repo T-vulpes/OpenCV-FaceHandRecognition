@@ -1,17 +1,17 @@
-const int ledPin = 8; // LED'in bağlı olduğu pin
+const int ledPin = 8; 
 
 void setup() {
   pinMode(ledPin, OUTPUT);
-  Serial.begin(9600); // Seri haberleşmeyi başlat
+  Serial.begin(9600);
 }
 
 void loop() {
   if (Serial.available() > 0) {
     char command = Serial.read();
     if (command == '1') {
-      digitalWrite(ledPin, HIGH); // LED'i yak
+      digitalWrite(ledPin, HIGH); 
     } else if (command == '0') {
-      digitalWrite(ledPin, LOW); // LED'i söndür
+      digitalWrite(ledPin, LOW); 
     }
   }
 }
