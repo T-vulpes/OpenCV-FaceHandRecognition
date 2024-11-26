@@ -10,7 +10,7 @@ with mp_holistic.Holistic(min_detection_confidence=0.5, min_tracking_confidence=
     while cap.isOpened():
         ret, frame = cap.read()
         if not ret:
-            print("Kameradan görüntü alınamadı.")
+            print("No image could be obtained from the camera.")
             break
 
         image = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
@@ -46,7 +46,7 @@ with mp_holistic.Holistic(min_detection_confidence=0.5, min_tracking_confidence=
                                       mp_drawing.DrawingSpec(color=(245, 117, 66), thickness=2, circle_radius=4),
                                       mp_drawing.DrawingSpec(color=(245, 66, 230), thickness=2, circle_radius=2)
                                       )
-        cv2.imshow('Web kamera goruntusu', image)
+        cv2.imshow('Webcam view', image)
         if cv2.waitKey(10) & 0xFF == ord('t'):
             break
 
