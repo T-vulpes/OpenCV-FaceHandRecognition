@@ -1,3 +1,5 @@
+#Wait a moment for the camera to open.
+
 import cv2
 import os
 import numpy as np
@@ -29,9 +31,8 @@ else:
 
                     faces = face_cascade.detectMultiScale(gray, scaleFactor=1.1, minNeighbors=5, minSize=(30, 30))
                     for (x, y, w, h) in faces:
-                        # Yüzü kırp ve normalize et
                         face = gray[y:y+h, x:x+w]
-                        resized_face = cv2.resize(face, (100, 100))  # Normalize boyut
+                        resized_face = cv2.resize(face, (100, 100))  
                         known_faces.append(resized_face)
                         known_names.append(os.path.splitext(file_name)[0])
                         print(f"Face found and loaded: {file_name}")
