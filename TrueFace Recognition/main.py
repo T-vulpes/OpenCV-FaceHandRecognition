@@ -60,10 +60,10 @@ while True:
             result = cv2.matchTemplate(resized_face_roi, known_face, cv2.TM_CCOEFF_NORMED)
             (_, max_val, _, _) = cv2.minMaxLoc(result)
 
-            if max_val > 0.6:  # Eşik değeri (0.6) daha hassas bir algılama için artırıldı
+            if max_val > 0.6:  
                 recognized = True
                 name = known_names[idx]
-                similarity = round(max_val * 100, 2)  # Benzerlik oranını yüzdeye çevir
+                similarity = round(max_val * 100, 2)  
                 cv2.putText(frame, f"{name} ({similarity}%)", (x, y - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 255, 0), 2)
                 cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 2)
                 break
@@ -73,7 +73,7 @@ while True:
             cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 0, 255), 2)
 
     cv2.imshow("Face Recognition", frame)
-    if cv2.waitKey(1) & 0xFF == ord('q'):
+    if cv2.waitKey(1) & 0xFF == ord('t'):
         print("Exiting...")
         break
 
