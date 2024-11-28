@@ -1,5 +1,5 @@
 #Wait a moment for the camera to open.
-
+#The project matches the image exactly.
 import cv2
 import os
 import numpy as np
