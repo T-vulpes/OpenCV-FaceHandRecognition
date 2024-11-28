@@ -56,7 +56,6 @@ while True:
         resized_face_roi = cv2.resize(face_roi, (100, 100))  
         recognized = False
 
-        # Bilinen yüzlerle karşılaştır
         for idx, known_face in enumerate(known_faces):
             result = cv2.matchTemplate(resized_face_roi, known_face, cv2.TM_CCOEFF_NORMED)
             (_, max_val, _, _) = cv2.minMaxLoc(result)
