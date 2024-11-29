@@ -50,8 +50,8 @@ while True:
         h, w, c = resized_overlay.shape
         img[0:h, 0:w] = resized_overlay
 
-        cv2.rectangle(img, (20, 225), (110, 290), (0, 0, 0), cv2.FILLED)  # Adjusted width
-        cv2.putText(img, str(totalfinger), (50, 280), cv2.FONT_HERSHEY_PLAIN, 3, (0, 0, 255), 3)  # Smaller font
+        cv2.rectangle(img, (20, 225), (110, 290), (0, 0, 0), cv2.FILLED)  
+        cv2.putText(img, str(totalfinger), (50, 280), cv2.FONT_HERSHEY_PLAIN, 3, (0, 0, 255), 3)  
 
     ctime = time.time()
     fps = 1 / (ctime - ptime)
@@ -59,8 +59,6 @@ while True:
     cv2.putText(img, f'FPS: {int(fps)}', (400, 70), cv2.FONT_HERSHEY_PLAIN, 3, (255, 0, 0), 3)
 
     cv2.imshow("Image", img)
-
-    # Check for 't' key press
     if cv2.waitKey(1) & 0xFF == ord('t'):
         print("Exiting...")
         break
