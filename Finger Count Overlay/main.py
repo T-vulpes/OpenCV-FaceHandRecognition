@@ -1,4 +1,5 @@
 #Wait a moment for the camera to turn on.
+#Displays an image on the screen based on the number of fingers detected (1-5).
 
 import cv2
 import time
