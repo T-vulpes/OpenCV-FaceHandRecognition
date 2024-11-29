@@ -1,3 +1,5 @@
+#Wait a moment for the camera to turn on.
+
 import cv2
 import time
 import os
