@@ -1,3 +1,5 @@
+#Wait a moment for the camera to open.
+
 import cv2
 import mediapipe as mp
 import random
