@@ -129,7 +129,6 @@ while cap.isOpened():
                     computer_choice = random.choice(["Rock", "Paper", "Scissors"])
                     show_computer_choice = False  
 
-            # Kull
             if game_active and countdown_start:
                 elapsed = time.time() - countdown_start
                 if elapsed < 3:  
@@ -138,7 +137,7 @@ while cap.isOpened():
                     user_choice = determine_hand_shape(hand_landmarks.landmark)
                     result_text = determine_winner(user_choice, computer_choice)
                     game_active = False
-                    show_computer_choice = True  # 
+                    show_computer_choice = True   
 
     if user_choice:
         cv2.putText(frame, f"User: {user_choice}", (10, 400), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
