@@ -33,7 +33,7 @@ while True:
     cv2.imshow("ROI", roi)
 
     key = cv2.waitKey(30)
-    if key == 27:  # Exit on ESC key
+    if key == 27:  #  ESC
         break
 
 cv2.destroyAllWindows()
