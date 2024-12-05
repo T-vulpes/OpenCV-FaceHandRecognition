@@ -4,8 +4,8 @@ from cvzone.HandTrackingModule import HandDetector
 import numpy as np
 
 cap = cv2.VideoCapture(0)
-cap.set(3, 1280)  # Genişlik
-cap.set(4, 720)   # Yükseklik
+cap.set(3, 1280)  
+cap.set(4, 720)   
 
 def load_image(path, name):
     img = cv2.imread(path)
