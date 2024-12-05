@@ -10,7 +10,7 @@ cap.set(4, 720)
 def load_image(path, name):
     img = cv2.imread(path)
     if img is None:
-        print(f"Hata: {name} yüklenemedi!")
+        print(f"Error: {name} could not be loaded!")
     return img
 
 imgBackground = load_image("images/Background.png", "Background")
