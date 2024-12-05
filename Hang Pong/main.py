@@ -1,3 +1,6 @@
+#Wait a moment for the camera to open..
+#To play, show both hands on the screen.
+
 import cv2
 import cvzone
 from cvzone.HandTrackingModule import HandDetector
