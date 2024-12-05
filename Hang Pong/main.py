@@ -40,10 +40,7 @@ while True:
     imgRaw = img.copy()
     hands, img = detector.findHands(img, flipType=False)
 
-    # Arka planı ekle
     img = cv2.addWeighted(img, 0.2, imgBackground, 0.8, 0)
-
-    # El ve raket hareketi
     if hands:
         for hand in hands:
             x, y, w, h = hand['bbox']
