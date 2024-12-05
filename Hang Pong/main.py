@@ -102,7 +102,7 @@ while True:
         speedX, speedY = 15, 15
         gameOver = False
         score = [0, 0]
-    if key == ord('t'):  # cls
+    if key == ord('t'):  # close
         break
 
 cap.release()
