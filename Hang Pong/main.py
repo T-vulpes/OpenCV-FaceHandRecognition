@@ -20,7 +20,7 @@ imgBat1 = cv2.imread("images/bat1.png", cv2.IMREAD_UNCHANGED)
 imgBat2 = cv2.imread("images/bat2.png", cv2.IMREAD_UNCHANGED)
 
 if any(img is None for img in [imgBackground, imgGameOver, imgBall, imgBat1, imgBat2]):
-    print("Tüm görsellerin doğru yüklendiğinden emin olun.")
+    print("Make sure all images are uploaded correctly.")
     exit()
 
 detector = HandDetector(detectionCon=0.8, maxHands=2)
