@@ -36,7 +36,7 @@ while True:
         print("Kamera görüntüsü alınamadı.")
         break
 
-    img = cv2.flip(img, 1)  # 
+    img = cv2.flip(img, 1)   
     imgRaw = img.copy()
     hands, img = detector.findHands(img, flipType=False)
 
@@ -50,14 +50,14 @@ while True:
             h1, w1, _ = imgBat1.shape
             y1 = np.clip(y - h1 // 2, 20, 415)
 
-            if hand['type'] == "Left":  # Sol 
+            if hand['type'] == "Left":   
                 img = cvzone.overlayPNG(img, imgBat1, (59, y1))
                 if 59 < ballPos[0] < 59 + w1 and y1 < ballPos[1] < y1 + h1:
                     speedX = -speedX
                     ballPos[0] += 30
                     score[0] += 1
 
-            if hand['type'] == "Right":  # Sağ 
+            if hand['type'] == "Right":   
                 img = cvzone.overlayPNG(img, imgBat2, (1195, y1))
                 if 1195 - 50 < ballPos[0] < 1195 and y1 < ballPos[1] < y1 + h1:
                     speedX = -speedX
