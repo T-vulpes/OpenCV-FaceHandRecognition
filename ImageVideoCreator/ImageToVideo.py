@@ -2,9 +2,7 @@ import cv2
 import os
 
 path = "img/"
-pre_img = os.listdir(path)  # Klasördeki tüm dosyaları listele
-
-# Sadece desteklenen resim formatlarını seç
+pre_img = os.listdir(path) 
 supported_formats = ['.jpg', '.png', '.jpeg', '.bmp']
 img_paths = [os.path.join(path, f) for f in pre_img if os.path.splitext(f)[1].lower() in supported_formats]
 
@@ -18,7 +16,7 @@ if frame is None:
 height, width, layers = frame.shape
 size = (width, height)
 
-cv2_fourcc = cv2.VideoWriter_fourcc(*'XVID')  # Alternatif codec: 'mp4v', 'DIVX'
+cv2_fourcc = cv2.VideoWriter_fourcc(*'XVID')  
 media = cv2.VideoWriter("newvideo.mp4", cv2_fourcc, 4, size)  # 24=fps
 
 for image_path in img_paths:
