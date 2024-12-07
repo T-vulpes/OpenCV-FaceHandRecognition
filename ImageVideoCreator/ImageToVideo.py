@@ -31,4 +31,4 @@ for image_path in img_paths:
     media.write(frame)
 
 media.release()
-print("Yeni video başarıyla kaydedildi!")
+print("New video saved successfully!")
