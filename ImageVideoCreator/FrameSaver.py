@@ -1,15 +1,12 @@
 import cv2
 
 cap = cv2.VideoCapture("videoplayback.mp4")
-
 timer = 10000
 
 while True:
     success, img = cap.read()
-    
-    # Eğer başarıyla görüntü alınamazsa döngüden çık
     if not success:
-        print("Video sona erdi veya görüntü alınamadı.")
+        print("The video ended or the image was not captured.")
         break
     
     outfile = 'output/img_%s.jpg' % (timer)
