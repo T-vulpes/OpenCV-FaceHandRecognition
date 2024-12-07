@@ -7,11 +7,11 @@ supported_formats = ['.jpg', '.png', '.jpeg', '.bmp']
 img_paths = [os.path.join(path, f) for f in pre_img if os.path.splitext(f)[1].lower() in supported_formats]
 
 if not img_paths:
-    raise ValueError("Klasörde geçerli resim dosyası bulunamadı. Lütfen 'img/' klasörünü kontrol edin.")
+    raise ValueError("No valid image file found in the folder. Please check the 'img/' folder.")
 
 frame = cv2.imread(img_paths[0])
 if frame is None:
-    raise ValueError("İlk görüntü yüklenemedi. Lütfen resim dosyalarının bozuk olmadığından emin olun.")
+    raise ValueError("The first image could not be loaded. Please make sure the image files are not corrupt.")
 
 height, width, layers = frame.shape
 size = (width, height)
