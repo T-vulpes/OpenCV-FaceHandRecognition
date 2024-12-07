@@ -13,16 +13,10 @@ while True:
     timer += 1
     print(outfile)
     
-    # Görüntüyü kaydet
     cv2.imwrite(outfile, img)
-    
-    # Görüntüyü göster
     cv2.imshow("Image", img)
-    
-    # Döngüyü durdurmak için 'q' tuşuna basabilirsiniz
-    if cv2.waitKey(1) & 0xFF == ord('q'):
+    if cv2.waitKey(1) & 0xFF == ord('t'):
         break
 
-# Kaynakları serbest bırak
 cap.release()
 cv2.destroyAllWindows()
