@@ -1,4 +1,3 @@
-# for contour in contours:
 
 import cv2
 import numpy as np
