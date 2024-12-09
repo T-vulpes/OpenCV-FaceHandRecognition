@@ -1,9 +1,7 @@
-
 import cv2
 import numpy as np
 
 cap = cv2.VideoCapture('CCTV2.mp4')
-
 ret, frame1 = cap.read()
 ret, frame2 = cap.read()
 
