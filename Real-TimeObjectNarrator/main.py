@@ -41,15 +41,11 @@ def load_classes(file_path):
             classes.append(line.strip())
     return classes
 
-# Main function
 def main():
-    # Define the classes and load model
     classes = load_classes("dnn_model/classes.txt")
     generate_audio_files(classes)
     model = initialize_model()
-
     detected_once = {class_name: False for class_name in classes}
-
     cap = cv2.VideoCapture(0)
 
     while True:
