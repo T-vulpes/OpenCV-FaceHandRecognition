@@ -1,3 +1,4 @@
+#Подождите немного, пока камера включится..................tttv
 import cv2
 import os
 from pygame import mixer
