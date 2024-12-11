@@ -33,7 +33,6 @@ def initialize_model():
     model.setInputParams(size=(320, 320), scale=1 / 255)
     return model
 
-# Load class list
 def load_classes(file_path):
     classes = []
     with open(file_path, "r") as f:
@@ -52,7 +51,6 @@ def main():
         ret, frame = cap.read()
         if not ret:
             break
-
         frame = cv2.flip(frame, 1)
 
         (class_ids, scores, bboxes) = model.detect(frame, confThreshold=0.3, nmsThreshold=0.4)
@@ -62,20 +60,17 @@ def main():
 
             class_name = classes[class_id]
             cv2.putText(frame, class_name, (x, y - 10), cv2.FONT_HERSHEY_PLAIN, 3, (200, 0, 50), 2)
-
-            # Play sound only if not played before
             if not detected_once[class_name]:
                 detected_once[class_name] = True
                 play_audio(class_name)
 
         cv2.imshow("Object Detection", frame)
         key = cv2.waitKey(1)
-        if key == 27:  # ESC to exit
+        if key == 27:  
             break
 
     cap.release()
     cv2.destroyAllWindows()
 
-# Run the program
 if __name__ == "__main__":
     main()
