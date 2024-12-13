@@ -8,20 +8,14 @@ frame_width = int(cap.get(3))
 frame_height = int(cap.get(4))
 out = cv2.VideoWriter('output.avi', cv2.VideoWriter_fourcc(*'XVID'), 10, (frame_width, frame_height))
 
-# Yüz algılama aralığını belirle
-detection_interval = 5  # Algılama her 5 karede bir yapılacak
+detection_interval = 5  
 frame_count = 0
 
 while True:
-    # Kameradan görüntü al
     check, frame = cap.read()
     if not check:
         break
-
-    # Görüntüyü gri tonlamaya çevir
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-
-    # Yüz algılama (her 5 karede bir)
     if frame_count % detection_interval == 0:
         faces = face_cascade.detectMultiScale(gray, scaleFactor=1.1, minNeighbors=5)
 
