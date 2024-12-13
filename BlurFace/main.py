@@ -1,13 +1,9 @@
 import cv2
 import time
 
-# Yüz sınıflandırıcı dosyasını yükle
 face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
-
-# Kamerayı başlat
 cap = cv2.VideoCapture(0)
 
-# Video kaydedici ayarları
 frame_width = int(cap.get(3))
 frame_height = int(cap.get(4))
 out = cv2.VideoWriter('output.avi', cv2.VideoWriter_fourcc(*'XVID'), 10, (frame_width, frame_height))
