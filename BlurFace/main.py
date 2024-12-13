@@ -18,29 +18,19 @@ while True:
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
     if frame_count % detection_interval == 0:
         faces = face_cascade.detectMultiScale(gray, scaleFactor=1.1, minNeighbors=5)
-
-    # Bulunan yüzleri bulanıklaştır
     for x, y, w, h in faces:
         frame = cv2.rectangle(frame, (x, y), (x+w, y+h), (0, 255, 0), 2)
         frame[y:y+h, x:x+w] = cv2.GaussianBlur(frame[y:y+h, x:x+w], (99, 99), 30)
 
-    # Yüz sayısını ekrana yazdır
     cv2.putText(frame, f'Faces Detected: {len(faces)}', (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 0, 0), 2)
-
-    # Videoyu kaydet
     out.write(frame)
-
-    # Görüntüyü göster
     cv2.imshow("Blurface", frame)
 
-    # Çıkış için 't' tuşuna basın
     key = cv2.waitKey(1)
     if key == ord('t'):
         break
-
     frame_count += 1
 
-# Kaynakları serbest bırak ve pencereleri kapat
 cap.release()
 out.release()
 cv2.destroyAllWindows()
