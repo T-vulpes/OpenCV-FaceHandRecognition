@@ -10,9 +10,9 @@ video.set(4, 480)  # Yükseklik
 sgmnt = SelfiSegmentation()
 prev_time = 0
 
-imgbg = cv2.imread("2.jpg")  # Arka plan görseli
+imgbg = cv2.imread("2.jpg")  
 if imgbg is not None:
-    imgbg = cv2.resize(imgbg, (640, 480))  # Kameranın çözünürlüğüne yeniden boyutlandır
+    imgbg = cv2.resize(imgbg, (640, 480))  
 else:
     print("Arka plan görseli yüklenemedi.")
     exit()
@@ -29,15 +29,12 @@ while True:
     # Görüntüleri yan yana yerleştirme
     imgstack = cvzone.stackImages([img, imgout], 2, 1)
     
-    # FPS hesaplama
     current_time = time.time()
     fps = 1 / (current_time - prev_time)
     prev_time = current_time
     
-    # FPS'yi üzerine yazma
     cv2.putText(imgstack, f'FPS: {int(fps)}', (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
     
-    # Görüntüleri ekranda gösterme
     #cv2.imshow("Original Image", img)
     #cv2.imshow("Processed Image", imgout)
     cv2.imshow("Image Stack", imgstack)
