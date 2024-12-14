@@ -6,8 +6,8 @@ from cvzone.SelfiSegmentationModule import SelfiSegmentation
 import time
 
 video = cv2.VideoCapture(0)
-video.set(3, 640)  # Genişlik
-video.set(4, 480)  # Yükseklik
+video.set(3, 640)  
+video.set(4, 480)  
 sgmnt = SelfiSegmentation()
 prev_time = 0
 
