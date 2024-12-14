@@ -1,3 +1,4 @@
+#Wait a moment for the camera to open......<3
 import cv2
 import cvzone
 import os
@@ -14,7 +15,7 @@ imgbg = cv2.imread("2.jpg")
 if imgbg is not None:
     imgbg = cv2.resize(imgbg, (640, 480))  
 else:
-    print("Arka plan görseli yüklenemedi.")
+    print("Background image could not be loaded.")
     exit()
 
 while True:
@@ -23,12 +24,8 @@ while True:
         print("Kamera görüntüsü alınamadı.")
         break
     
-    # Arka planı kaldırma
     imgout = sgmnt.removeBG(img, imgbg)  
-    
-    # Görüntüleri yan yana yerleştirme
     imgstack = cvzone.stackImages([img, imgout], 2, 1)
-    
     current_time = time.time()
     fps = 1 / (current_time - prev_time)
     prev_time = current_time
