@@ -18,13 +18,13 @@ else:
     exit()
 
 while True:
-    success, img = video.read()  # Kameradan görüntü alınıyor
+    success, img = video.read()  
     if not success:
         print("Kamera görüntüsü alınamadı.")
         break
     
     # Arka planı kaldırma
-    imgout = sgmnt.removeBG(img, imgbg)  # threshold parametresi kaldırıldı
+    imgout = sgmnt.removeBG(img, imgbg)  
     
     # Görüntüleri yan yana yerleştirme
     imgstack = cvzone.stackImages([img, imgout], 2, 1)
@@ -42,10 +42,8 @@ while True:
     #cv2.imshow("Processed Image", imgout)
     cv2.imshow("Image Stack", imgstack)
 
-    # Çıkış için 'q' tuşuna basılabilir
     if cv2.waitKey(1) & 0xFF == ord('t'):
         break
 
-# Kaynakları serbest bırak ve pencereleri kapat
 video.release()
 cv2.destroyAllWindows()
