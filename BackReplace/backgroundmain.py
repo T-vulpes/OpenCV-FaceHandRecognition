@@ -4,18 +4,12 @@ import os
 from cvzone.SelfiSegmentationModule import SelfiSegmentation
 import time
 
-# Video yakalama başlatılıyor
 video = cv2.VideoCapture(0)
 video.set(3, 640)  # Genişlik
 video.set(4, 480)  # Yükseklik
-
-# SelfiSegmentation başlatılıyor
 sgmnt = SelfiSegmentation()
-
-# FPS hesaplamak için zaman değişkeni
 prev_time = 0
 
-# Arka plan görseli
 imgbg = cv2.imread("2.jpg")  # Arka plan görseli
 if imgbg is not None:
     imgbg = cv2.resize(imgbg, (640, 480))  # Kameranın çözünürlüğüne yeniden boyutlandır
