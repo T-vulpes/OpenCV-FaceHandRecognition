@@ -21,7 +21,7 @@ else:
 while True:
     success, img = video.read()  
     if not success:
-        print("Kamera görüntüsü alınamadı.")
+        print("Camera image could not be obtained.")
         break
     
     imgout = sgmnt.removeBG(img, imgbg)  
