@@ -1,3 +1,5 @@
+#Don't forget to update the port number according to your needs...
+
 import cv2
 import time
 import mediapipe as mp
