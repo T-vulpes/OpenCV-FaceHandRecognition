@@ -50,14 +50,9 @@ with mp_hands.Hands(
                         except serial.SerialException as e:
                             print(f"Seri bağlantı hatası: {e}")
                         last_command_time = current_time  # Zamanı güncelle
-
-                # Önceki x değerini güncelle
                 prev_x = x_coord
 
-                # Metni görüntüye ekle
                 cv2.putText(image, movement, (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2, cv2.LINE_AA)
-
-                # El işaretlerini çiz
                 mp_drawing.draw_landmarks(
                     image,
                     hand_landmarks,
@@ -65,14 +60,10 @@ with mp_hands.Hands(
                     mp_drawing.DrawingSpec(color=(0, 0, 255), thickness=2, circle_radius=2),
                     mp_drawing.DrawingSpec(color=(255, 0, 0), thickness=2))
 
-        # Görüntüyü göster
         cv2.imshow('El Hareket Algılama', image)
-
-        # Çıkış için ESC tuşu
         if cv2.waitKey(5) & 0xFF == 27:
             break
 
-# Kaynakları serbest bırak
 cap.release()
 cv2.destroyAllWindows()
 arduino.close()
