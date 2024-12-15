@@ -3,14 +3,12 @@ import time
 import mediapipe as mp
 import serial
 
-arduino = serial.Serial(port='COM6', baudrate=9600, timeout=0.1)  # Timeout küçük olmalı
-time.sleep(2)  
-
+arduino = serial.Serial(port='COM6', baudrate=9600, timeout=0.1) 
+time.sleep(2) 
 mp_drawing = mp.solutions.drawing_utils
 mp_hands = mp.solutions.hands
 
 cap = cv2.VideoCapture(0)
-
 prev_x = None
 movement = ""
 last_command_time = 0  
@@ -22,7 +20,7 @@ with mp_hands.Hands(
     while cap.isOpened():
         success, image = cap.read()
         if not success:
-            print("Kamera görüntüsü alınamadı.")
+            print("Camera image could not be obtained.")
             continue
 
         image = cv2.cvtColor(cv2.flip(image, 1), cv2.COLOR_BGR2RGB)
@@ -34,7 +32,7 @@ with mp_hands.Hands(
         if results.multi_hand_landmarks:
             for hand_landmarks in results.multi_hand_landmarks:
                 x_coord = hand_landmarks.landmark[mp_hands.HandLandmark.WRIST].x
-                current_time = time.time()  # Şu anki zamanı al
+                current_time = time.time()  
                 if prev_x is not None:
                     if x_coord - prev_x > 0.05 and (current_time - last_command_time > command_interval):  # Sağ hareket
                         movement = "Right"
@@ -48,7 +46,7 @@ with mp_hands.Hands(
                         try:
                             arduino.write(b"LEFT\n")  
                         except serial.SerialException as e:
-                            print(f"Seri bağlantı hatası: {e}")
+                            print(f"Serial connection error: {e}")
                         last_command_time = current_time  
                 prev_x = x_coord
 
@@ -60,7 +58,7 @@ with mp_hands.Hands(
                     mp_drawing.DrawingSpec(color=(0, 0, 255), thickness=2, circle_radius=2),
                     mp_drawing.DrawingSpec(color=(255, 0, 0), thickness=2))
 
-        cv2.imshow('El Hareket Algılama', image)
+        cv2.imshow('Frame', image)
         if cv2.waitKey(5) & 0xFF == 27:
             break
 
