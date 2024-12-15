@@ -11,13 +11,13 @@ void setup() {
 
 void loop() {
   if (Serial.available()) {
-    String command = Serial.readStringUntil('\n');  // Komut oku
-    command.trim();  // Fazla boşlukları kaldır
+    String command = Serial.readStringUntil('\n'); 
+    command.trim();  
 
     if (command == "RIGHT") {
-      myServo.write(180);  // Servo motoru sağa döndür
+      myServo.write(180);  
     } else if (command == "LEFT") {
-      myServo.write(0);  // Servo motoru sola döndür
+      myServo.write(0);  
     }
     
   }
