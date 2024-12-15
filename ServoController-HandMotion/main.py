@@ -13,8 +13,8 @@ cap = cv2.VideoCapture(0)
 
 prev_x = None
 movement = ""
-last_command_time = 0  # Son gönderilen komutun zamanı
-command_interval = 0.5  # Komutlar arası minimum zaman (saniye)
+last_command_time = 0  
+command_interval = 0.5 
 
 with mp_hands.Hands(
     min_detection_confidence=0.5,
@@ -25,34 +25,28 @@ with mp_hands.Hands(
             print("Kamera görüntüsü alınamadı.")
             continue
 
-        # Görüntüyü işle
         image = cv2.cvtColor(cv2.flip(image, 1), cv2.COLOR_BGR2RGB)
         image.flags.writeable = False
         results = hands.process(image)
-
-        # Görüntüyü çizilebilir yap ve RGB'den BGR'ye çevir
         image.flags.writeable = True
         image = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)
 
         if results.multi_hand_landmarks:
             for hand_landmarks in results.multi_hand_landmarks:
-                # Elin avuç içi merkezinin x koordinatını al
                 x_coord = hand_landmarks.landmark[mp_hands.HandLandmark.WRIST].x
-
-                # Hareket kontrolü
                 current_time = time.time()  # Şu anki zamanı al
                 if prev_x is not None:
                     if x_coord - prev_x > 0.05 and (current_time - last_command_time > command_interval):  # Sağ hareket
                         movement = "Sağ"
                         try:
-                            arduino.write(b"RIGHT\n")  # Arduino'ya sağ komut gönder
+                            arduino.write(b"RIGHT\n")  
                         except serial.SerialException as e:
                             print(f"Seri bağlantı hatası: {e}")
-                        last_command_time = current_time  # Zamanı güncelle
+                        last_command_time = current_time  
                     elif prev_x - x_coord > 0.05 and (current_time - last_command_time > command_interval):  # Sol hareket
                         movement = "Sol"
                         try:
-                            arduino.write(b"LEFT\n")  # Arduino'ya sol komut gönder
+                            arduino.write(b"LEFT\n")  
                         except serial.SerialException as e:
                             print(f"Seri bağlantı hatası: {e}")
                         last_command_time = current_time  # Zamanı güncelle
