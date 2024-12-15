@@ -34,14 +34,14 @@ with mp_hands.Hands(
                 x_coord = hand_landmarks.landmark[mp_hands.HandLandmark.WRIST].x
                 current_time = time.time()  
                 if prev_x is not None:
-                    if x_coord - prev_x > 0.05 and (current_time - last_command_time > command_interval):  # Sağ hareket
+                    if x_coord - prev_x > 0.05 and (current_time - last_command_time > command_interval):  
                         movement = "Right"
                         try:
                             arduino.write(b"RIGHT\n")  
                         except serial.SerialException as e:
                             print(f"Serial connection error: {e}")
                         last_command_time = current_time  
-                    elif prev_x - x_coord > 0.05 and (current_time - last_command_time > command_interval):  # Sol hareket
+                    elif prev_x - x_coord > 0.05 and (current_time - last_command_time > command_interval):  
                         movement = "Left"
                         try:
                             arduino.write(b"LEFT\n")  
