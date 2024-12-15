@@ -3,18 +3,14 @@ import time
 import mediapipe as mp
 import serial
 
-# Arduino bağlantısı
 arduino = serial.Serial(port='COM6', baudrate=9600, timeout=0.1)  # Timeout küçük olmalı
-time.sleep(2)  # Arduino'nun başlatılması için bekleme
+time.sleep(2)  
 
-# Mediapipe kurulum
 mp_drawing = mp.solutions.drawing_utils
 mp_hands = mp.solutions.hands
 
-# Kamerayı başlat
 cap = cv2.VideoCapture(0)
 
-# Elin x koordinatını takip etmek için başlangıç değeri
 prev_x = None
 movement = ""
 last_command_time = 0  # Son gönderilen komutun zamanı
