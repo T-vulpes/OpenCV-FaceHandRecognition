@@ -37,19 +37,19 @@ with mp_hands.Hands(
                 current_time = time.time()  # Şu anki zamanı al
                 if prev_x is not None:
                     if x_coord - prev_x > 0.05 and (current_time - last_command_time > command_interval):  # Sağ hareket
-                        movement = "Sağ"
+                        movement = "Right"
                         try:
                             arduino.write(b"RIGHT\n")  
                         except serial.SerialException as e:
-                            print(f"Seri bağlantı hatası: {e}")
+                            print(f"Serial connection error: {e}")
                         last_command_time = current_time  
                     elif prev_x - x_coord > 0.05 and (current_time - last_command_time > command_interval):  # Sol hareket
-                        movement = "Sol"
+                        movement = "Left"
                         try:
                             arduino.write(b"LEFT\n")  
                         except serial.SerialException as e:
                             print(f"Seri bağlantı hatası: {e}")
-                        last_command_time = current_time  # Zamanı güncelle
+                        last_command_time = current_time  
                 prev_x = x_coord
 
                 cv2.putText(image, movement, (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2, cv2.LINE_AA)
