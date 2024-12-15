@@ -1,12 +1,12 @@
 #include <Servo.h>
 
-Servo myServo;  // Servo motor nesnesi
-int servoPin = 9;  // Servo motor pini
+Servo myServo; 
+int servoPin = 9;  
 
 void setup() {
-  Serial.begin(9600);  // Seri port iletişimi başlat
-  myServo.attach(servoPin);  // Servo motoru belirtilen pine bağla
-  myServo.write(90);  // Başlangıç pozisyonu (orta nokta)
+  Serial.begin(9600);   #baudrate
+  myServo.attach(servoPin);  
+  myServo.write(90); 
 }
 
 void loop() {
