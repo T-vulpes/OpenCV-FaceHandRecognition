@@ -51,7 +51,7 @@ def set_color(color_name):
     selected_color[0] = color_name
 
 root = Tk()
-root.title("Renk Seçici")
+root.title("Color Picker")
 
 for color_name in colors.keys():
     btn = Button(root, text=color_name, bg=color_name, command=lambda c=color_name: set_color(c))
