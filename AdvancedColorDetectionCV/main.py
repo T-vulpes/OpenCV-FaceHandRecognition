@@ -1,3 +1,5 @@
+#Wait a moment for the camera to turn on.
+
 import cv2
 import numpy as np
 from tkinter import Tk, Button
@@ -55,7 +57,6 @@ for color_name in colors.keys():
     btn = Button(root, text=color_name, bg=color_name, command=lambda c=color_name: set_color(c))
     btn.pack(fill="x")
 
-# Video işleme
 video = cv2.VideoCapture(0)
 
 def video_loop():
@@ -65,19 +66,15 @@ def video_loop():
         return
 
     image_hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
-
-    # Seçilen renge göre işle
     frame = process_frame(selected_color[0], colors, frame, image_hsv)
-
     cv2.imshow("CAMERA", frame)
+    
     if cv2.waitKey(1) & 0xFF == ord('t'):
         root.quit()
         return
-
     root.after(10, video_loop)
 
 root.after(0, video_loop)
 root.mainloop()
-
 video.release()
 cv2.destroyAllWindows()
