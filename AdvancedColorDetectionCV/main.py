@@ -25,14 +25,13 @@ def process_frame(color_name, colors, frame, image_hsv):
 
     contours, _ = cv2.findContours(mask, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
     for contour in contours:
-        if cv2.contourArea(contour) > 500:  # Minimum alan filtresi
+        if cv2.contourArea(contour) > 500: 
             x, y, w, h = cv2.boundingRect(contour)
             cv2.rectangle(frame, (x, y), (x + w, y + h), bgr_value, 2)
             cv2.putText(frame, color_name, (x, y - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.6, bgr_value, 2)
 
     return frame
 
-# Renkler ve başlangıç seçimi
 colors = {
     "yellow": (0, 255, 255),
     "red": (0, 0, 255),
@@ -46,11 +45,9 @@ colors = {
 }
 selected_color = ["yellow"]
 
-# Renk seçimini değiştir
 def set_color(color_name):
     selected_color[0] = color_name
 
-# Tkinter arayüzü
 root = Tk()
 root.title("Renk Seçici")
 
