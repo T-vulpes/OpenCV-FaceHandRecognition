@@ -57,24 +57,19 @@ while True:
         cvzone.putTextRect(img, f'Score: {str(score).zfill(2)}', (60, 75), 
                            scale=3, offset=20, colorR=text_color)
     else:
-        # Oyun bitti
         cvzone.putTextRect(img, 'Game Over', (400, 400), scale=5, offset=30, thickness=7, colorR=text_color)
         cvzone.putTextRect(img, f'Your Score: {score}', (450, 500), scale=3, offset=20, colorR=text_color)
         cvzone.putTextRect(img, 'Press R to restart', (460, 575), scale=2, offset=10, colorR=text_color)
 
-    # Görüntü gösterimi
     cv2.imshow("Image", img)
     key = cv2.waitKey(1)
 
-    # Restart kontrolü
     if key == ord('r'):
         timeStart = time.time()
         score = 0
 
-    # Çıkış kontrolü
     if key == 84:  # T
         break
 
-# Kaynakları serbest bırak
 cap.release()
 cv2.destroyAllWindows()
