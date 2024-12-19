@@ -1,5 +1,5 @@
-#Wait for the camera to open.
-#Point to the point with your index finger
+# Wait for the camera to open.
+# Point to the point with your index finger...
 
 import cv2
 import mediapipe as mp
@@ -37,13 +37,13 @@ while True:
                 h, w, _ = img.shape
                 index_x, index_y = int(index_finger_tip.x * w), int(index_finger_tip.y * h)
                 dist = ((index_x - cx) ** 2 + (index_y - cy) ** 2) ** 0.5
-                if dist < 30:  # İşaret parmağı çemberin içine girerse
+                if dist < 30:  
                     score += 1
                     cx, cy = random.randint(100, 1100), random.randint(100, 600)  # Yeni çember konumu
-                    circle_color = (0, 255, 0)  # Rengi yeşil yap
+                    circle_color = (0, 255, 0) 
                     break
                 else:
-                    circle_color = (128, 0, 128)  # Rengi tekrar lacivert yap
+                    circle_color = (128, 0, 128) 
 
         cv2.circle(img, (cx, cy), 30, circle_color, cv2.FILLED)
         cv2.circle(img, (cx, cy), 10, (255, 255, 255), cv2.FILLED)
