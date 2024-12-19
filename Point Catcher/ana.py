@@ -30,12 +30,9 @@ while True:
             for hand_landmarks in results.multi_hand_landmarks:
                 mp_drawing.draw_landmarks(img, hand_landmarks, mp_hands.HAND_CONNECTIONS)
 
-                # İşaret parmağı ucunun koordinatları (landmark 8)
                 index_finger_tip = hand_landmarks.landmark[8]
                 h, w, _ = img.shape
                 index_x, index_y = int(index_finger_tip.x * w), int(index_finger_tip.y * h)
-
-                # Çemberin merkezine mesafeyi hesapla
                 dist = ((index_x - cx) ** 2 + (index_y - cy) ** 2) ** 0.5
                 if dist < 30:  # İşaret parmağı çemberin içine girerse
                     score += 1
@@ -45,13 +42,11 @@ while True:
                 else:
                     circle_color = (128, 0, 128)  # Rengi tekrar lacivert yap
 
-        # Çember çizimi
         cv2.circle(img, (cx, cy), 30, circle_color, cv2.FILLED)
         cv2.circle(img, (cx, cy), 10, (255, 255, 255), cv2.FILLED)
         cv2.circle(img, (cx, cy), 20, (255, 255, 255), 2)
         cv2.circle(img, (cx, cy), 30, (50, 50, 50), 2)
 
-        # Oyun arayüzü
         cvzone.putTextRect(img, f'Time: {int(totalTime - (time.time() - timeStart))}', (1000, 75), 
                            scale=3, offset=20, colorR=text_color)
         cvzone.putTextRect(img, f'Score: {str(score).zfill(2)}', (60, 75), 
