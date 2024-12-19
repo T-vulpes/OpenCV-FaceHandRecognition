@@ -4,23 +4,20 @@ import random
 import time
 import cvzone
 
-# Mediapipe Hand Detector
 mp_hands = mp.solutions.hands
 mp_drawing = mp.solutions.drawing_utils
 hands = mp_hands.Hands(static_image_mode=False, max_num_hands=1, min_detection_confidence=0.7)
 
-# Webcam ayarları
 cap = cv2.VideoCapture(0)
 cap.set(3, 1280)
 cap.set(4, 720)
 
-# Oyun değişkenleri
 cx, cy = random.randint(100, 1100), random.randint(100, 600)
 score = 0
 timeStart = time.time()
 totalTime = 30
-circle_color = (128, 0, 128)  # Başlangıç rengi: lacivert (RGB: Navy Blue)
-text_color = (128, 0, 128)    # Yazı rengi: lacivert
+circle_color = (128, 0, 128)  
+text_color = (128, 0, 128)    
 
 while True:
     success, img = cap.read()
