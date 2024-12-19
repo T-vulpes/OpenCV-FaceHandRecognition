@@ -1,3 +1,6 @@
+#Wait for the camera to open.
+#Point to the point with your index finger
+
 import cv2
 import mediapipe as mp
 import random
