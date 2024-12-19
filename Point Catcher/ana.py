@@ -39,7 +39,7 @@ while True:
                 dist = ((index_x - cx) ** 2 + (index_y - cy) ** 2) ** 0.5
                 if dist < 30:  
                     score += 1
-                    cx, cy = random.randint(100, 1100), random.randint(100, 600)  # Yeni çember konumu
+                    cx, cy = random.randint(100, 1100), random.randint(100, 600)  
                     circle_color = (0, 255, 0) 
                     break
                 else:
