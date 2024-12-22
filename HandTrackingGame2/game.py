@@ -49,38 +49,28 @@ while True:
             img_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
 
             results = hands.process(img_rgb)
-            
-            # Görüntüyü tekrar BGR formatına çevir
             img_bgr = cv2.cvtColor(img_rgb, cv2.COLOR_RGB2BGR)
 
-            # Skoru yazdır
             font = cv2.FONT_HERSHEY_SIMPLEX
             color = (255, 0, 255)
             cv2.putText(img_bgr, f"Score: {score}", (10, 50), font, 1, color, 2, cv2.LINE_AA)
 
-            # Kalan süreyi yazdır
             elapsed_time = time.time() - start_time
             remaining_time = max(0, int(time_limit - elapsed_time))
             cv2.putText(img_bgr, f"Time: {remaining_time}s", (10, 100), font, 1, color, 2, cv2.LINE_AA)
 
-            # Düşmanı çiz
             draw_enemy(img_bgr)
 
-            # El tespiti ve işaret parmağı koordinatları
             if results.multi_hand_landmarks:
                 for hand_landmarks in results.multi_hand_landmarks:
                     mp_drawing.draw_landmarks(img_bgr, hand_landmarks, mp_hands.HAND_CONNECTIONS)
 
-                    # İşaret parmağı ucu koordinatları
                     index_finger_tip = hand_landmarks.landmark[mp_hands.HandLandmark.INDEX_FINGER_TIP]
                     h, w, _ = img_bgr.shape
                     index_x = int(index_finger_tip.x * w)
                     index_y = int(index_finger_tip.y * h)
 
-                    # Parmağı düşman gibi bir daire ile işaretle
                     cv2.circle(img_bgr, (index_x, index_y), 25, (0, 200, 0), 5)
-
-                    # Çarpışma kontrolü
                     check_collision(index_x, index_y)
 
             cv2.imshow("Hand Tracking Game", img_bgr)
