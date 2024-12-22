@@ -26,9 +26,7 @@ def reset_game():
 def draw_enemy(img):
     cv2.circle(img, (enemy_x, enemy_y), 25, (0, 200, 0), 5)
 
-# Çarpışma kontrolü fonksiyonu
 def check_collision(index_x, index_y):
-    """İşaret parmağı ile düşman arasında çarpışma kontrolü."""
     global score, enemy_x, enemy_y
     if enemy_x - 25 < index_x < enemy_x + 25 and enemy_y - 25 < index_y < enemy_y + 25:
         score += 1
@@ -36,10 +34,7 @@ def check_collision(index_x, index_y):
         enemy_x = random.randint(50, 600)
         enemy_y = random.randint(50, 400)
 
-# Kamera başlatma
 cap = cv2.VideoCapture(0)
-
-# İlk oyun ayarlarını başlat
 reset_game()
 time_limit = 30  # Oyun süresi (saniye)
 
@@ -50,11 +45,9 @@ while True:
             if not ret:
                 break
 
-            # Görüntüyü çevir ve RGB'ye dönüştür
             frame = cv2.flip(frame, 1)
             img_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
 
-            # Mediapipe ile işleme
             results = hands.process(img_rgb)
             
             # Görüntüyü tekrar BGR formatına çevir
