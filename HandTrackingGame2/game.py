@@ -1,5 +1,5 @@
-#"I saw the original content of this file on the 'Iknowpython' YouTube channel,
-#        and I decided to upload it with 1-2 changes, including the addition of a custom sound effect."
+# I saw the original content of this file on the 'Iknowpython' YouTube channel,
+#        and I decided to upload it with 1-2 changes, including the addition of a custom sound effect.
 
 import cv2
 import mediapipe as mp
@@ -90,14 +90,12 @@ while True:
                     # Çarpışma kontrolü
                     check_collision(index_x, index_y)
 
-            # Görüntüyü göster
             cv2.imshow("Hand Tracking Game", img_bgr)
 
-            # Süre dolduysa oyunu sonlandır
             if remaining_time <= 0:
                 cv2.putText(img_bgr, "Time's Up! Press X to Restart", (50, 300), font, 1, (0, 0, 255), 3, cv2.LINE_AA)
                 cv2.imshow("Hand Tracking Game", img_bgr)
-                if cv2.waitKey(0) & 0xFF == ord('x'):  # "X" tuşuna basıldığında oyunu sıfırla
+                if cv2.waitKey(0) & 0xFF == ord('x'):  
                     reset_game()
                     break
                 else:
@@ -105,7 +103,6 @@ while True:
                     cv2.destroyAllWindows()
                     exit()
 
-            # Çıkış için 'q' tuşuna bas
             if cv2.waitKey(1) & 0xFF == ord('t'):
                 cap.release()
                 cv2.destroyAllWindows()
