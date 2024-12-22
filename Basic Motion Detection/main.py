@@ -20,7 +20,7 @@ while True:
 
     cv2.imshow("Camera", thresh)
 
-    if cv2.waitKey(10) == ord('t'):  # 'T' tuşuna basıldığında çık
+    if cv2.waitKey(10) == ord('t'):  # 'T'
         break
 
 cam.release()
