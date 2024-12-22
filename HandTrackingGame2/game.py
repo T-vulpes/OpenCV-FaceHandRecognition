@@ -36,7 +36,7 @@ def check_collision(index_x, index_y):
 
 cap = cv2.VideoCapture(0)
 reset_game()
-time_limit = 30  # Oyun süresi (saniye)
+time_limit = 30  
 
 while True:
     with mp_hands.Hands(min_detection_confidence=0.8, min_tracking_confidence=0.5) as hands:
