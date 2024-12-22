@@ -1,8 +1,10 @@
+#"I saw the original content of this file on the 'Iknowpython' YouTube channel,
+#        and I decided to upload it with 1-2 changes, including the addition of a custom sound effect."
+
 import cv2
 import mediapipe as mp
 import random
 import time
-#from playsound import playsound
 import  pygame
 
 
