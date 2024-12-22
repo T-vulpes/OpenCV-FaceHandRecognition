@@ -1,3 +1,5 @@
+#Wait for the camera to open...
+
 import cv2
 import time
 import winsound
