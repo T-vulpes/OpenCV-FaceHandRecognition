@@ -8,15 +8,14 @@ import time
 import  pygame
 
 
-# Mediapipe ve OpenCV ayarları
 mp_drawing = mp.solutions.drawing_utils
 mp_hands = mp.solutions.hands
 
 def play_success_sound():
-    pygame.mixer.init()  # pygame ses modülünü başlatır
-    pygame.mixer.music.load("success.mp3")  # MP3 dosyasını yükler
-    pygame.mixer.music.play()  # MP3 dosyasını çalar
-# Oyun başlangıç ayarları
+    pygame.mixer.init()  
+    pygame.mixer.music.load("success.mp3")  
+    pygame.mixer.music.play()  
+
 def reset_game():
     global score, enemy_x, enemy_y, start_time
     score = 0
@@ -24,9 +23,7 @@ def reset_game():
     enemy_y = random.randint(50, 400)
     start_time = time.time()
 
-# Düşmanı çizme fonksiyonu
 def draw_enemy(img):
-    """Düşmanı çizer."""
     cv2.circle(img, (enemy_x, enemy_y), 25, (0, 200, 0), 5)
 
 # Çarpışma kontrolü fonksiyonu
