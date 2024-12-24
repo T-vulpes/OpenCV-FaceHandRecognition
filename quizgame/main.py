@@ -39,22 +39,16 @@ class QuizQuestion:
         return False
 
     def apply_colors(self):
-        """
-        Şık kutularına doğru/yanlış renklerini uygular.
-        """
-        self.color_boxes = [(0, 0, 0)] * 4  # Tüm kutuları siyaha döndür
+        self.color_boxes = [(0, 0, 0)] * 4  
         if self.answered:
             correct_index = self.get_answer_index() - 1
             if self.useransw == correct_index + 1:
                 self.color_boxes[correct_index] = (0, 255, 0)  # Doğru şık: Yeşil
             else:
-                self.color_boxes[self.useransw - 1] = (0, 0, 255)  # Yanlış şık: Kırmızı
-                self.color_boxes[correct_index] = (0, 255, 0)  # Doğru şık: Yeşil
+                self.color_boxes[self.useransw - 1] = (0, 0, 255)  
+                self.color_boxes[correct_index] = (0, 255, 0) 
 
     def get_answer_index(self):
-        """
-        Doğru cevabın indeksini döndürür.
-        """
         return {"A": 1, "B": 2, "C": 3, "D": 4}[self.answer]
 
 
@@ -65,11 +59,9 @@ score = 0
 running = True
 lock = threading.Lock()
 
-# Global değişkenler
 frame = None
 current_hand = None
 
-# Kamera okuma thread'i
 def capture_frames():
     global frame
     while running:
@@ -77,7 +69,6 @@ def capture_frames():
         if success:
             frame = cv2.flip(img, 1)
 
-# El algılama thread'i
 def detect_hand():
     global current_hand, frame
     while running:
@@ -88,10 +79,9 @@ def detect_hand():
             else:
                 current_hand = None
 
-# Quiz mantığı thread'i
 def process_quiz():
     global qno, score, running, current_hand, frame
-    debounce_time = 1  # Şık seçimi için bekleme süresi (saniye)
+    debounce_time = 1  
     last_interaction = time.time()
 
     while running:
