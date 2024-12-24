@@ -32,9 +32,9 @@ class QuizQuestion:
         for x, bbox in enumerate(bboxs):
             x1, y1, x2, y2 = bbox
             if x1 < cursor[0] < x2 and y1 < cursor[1] < y2:
-                self.useransw = x + 1  # Kullanıcının seçtiği şık
+                self.useransw = x + 1  
                 self.answered = True
-                self.apply_colors()  # Renkleri uygula
+                self.apply_colors()  
                 return True
         return False
 
@@ -43,7 +43,7 @@ class QuizQuestion:
         if self.answered:
             correct_index = self.get_answer_index() - 1
             if self.useransw == correct_index + 1:
-                self.color_boxes[correct_index] = (0, 255, 0)  # Doğru şık: Yeşil
+                self.color_boxes[correct_index] = (0, 255, 0)  
             else:
                 self.color_boxes[self.useransw - 1] = (0, 0, 255)  
                 self.color_boxes[correct_index] = (0, 255, 0) 
@@ -100,29 +100,27 @@ def process_quiz():
                 img, _ = cvzone.putTextRect(img, f"Score: {score}", [900, 100], 2, 2, offset=10, border=2, colorB=(0, 0, 0), colorR=(50, 50, 150))
 
                 if current_hand and time.time() - last_interaction > debounce_time:
-                    if not msq.answered:  # Soru daha önce cevaplanmamışsa
+                    if not msq.answered:  
                         if msq.update(current_hand, [bbox1, bbox2, bbox3, bbox4]):
                             last_interaction = time.time()
                             if msq.useransw == msq.get_answer_index():
                                 score += 1
                             qno += 1  
 
-            else:  # Tüm sorular bittiğinde
+            else:  
                 img, _ = cvzone.putTextRect(img, "Game Over", [400, 300], 3, 3, offset=30, border=5, colorB=(0, 0, 255), colorR=(50, 50, 150))
                 img, _ = cvzone.putTextRect(img, f"Your Score: {score}/{qtotal}", [400, 400], 2, 2, offset=20, border=3, colorB=(0, 0, 0), colorR=(50, 50, 150))
 
             cv2.imshow("Quiz Game", img)
 
-        # Kullanıcıdan çıkış bekleme (ama ekran donmaz)
-        if qno >= qtotal or cv2.waitKey(1) == ord('t'):  # Tüm sorular bittiyse
-            if cv2.waitKey(1) == ord('t'):  # 't' tuşuna basılınca çıkış
+        if qno >= qtotal or cv2.waitKey(1) == ord('t'):  
+            if cv2.waitKey(1) == ord('t'): 
                 running = False
                 break
 
         if cv2.waitKey(1) == ord('t'):
             running = False
             break
-
 
 capture_thread = threading.Thread(target=capture_frames)
 detect_thread = threading.Thread(target=detect_hand)
