@@ -5,15 +5,13 @@ import csv
 import threading
 import time
 
-# Kamera başlatma
 cap = cv2.VideoCapture(0)
-cap.set(3, 1280)  # Çözünürlük genişlik
-cap.set(4, 720)   # Çözünürlük yükseklik
+cap.set(3, 1280)  
+cap.set(4, 720)   
 
-detector = HandDetector(detectionCon=0.7, maxHands=1)  # Hassasiyet ayarı
+detector = HandDetector(detectionCon=0.7, maxHands=1)  
 pathcsv = "quiz.csv"
 
-# CSV dosyasını yükleme
 with open(pathcsv, newline='', encoding="iso-8859-9") as f:
     reader = csv.reader(f, delimiter=';')
     dataquiz = [row for row in reader][1:]
