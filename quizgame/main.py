@@ -137,7 +137,6 @@ def process_quiz():
             break
 
 
-# Thread'leri başlat
 capture_thread = threading.Thread(target=capture_frames)
 detect_thread = threading.Thread(target=detect_hand)
 quiz_thread = threading.Thread(target=process_quiz)
@@ -146,7 +145,6 @@ capture_thread.start()
 detect_thread.start()
 quiz_thread.start()
 
-# Thread'leri bitir
 capture_thread.join()
 detect_thread.join()
 quiz_thread.join()
