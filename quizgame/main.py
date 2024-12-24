@@ -16,7 +16,6 @@ with open(pathcsv, newline='', encoding="iso-8859-9") as f:
     reader = csv.reader(f, delimiter=';')
     dataquiz = [row for row in reader][1:]
 
-# Quiz sınıfı
 class QuizQuestion:
     def __init__(self, data):
         self.question = data[0]
@@ -27,12 +26,9 @@ class QuizQuestion:
         self.answer = data[5]
         self.useransw = None
         self.answered = False
-        self.color_boxes = [(0, 0, 0)] * 4  # Varsayılan renk: siyah
+        self.color_boxes = [(0, 0, 0)] * 4  
 
     def update(self, cursor, bboxs):
-        """
-        Kullanıcının elinin şık kutucuklarının üzerinde olup olmadığını kontrol eder.
-        """
         for x, bbox in enumerate(bboxs):
             x1, y1, x2, y2 = bbox
             if x1 < cursor[0] < x2 and y1 < cursor[1] < y2:
