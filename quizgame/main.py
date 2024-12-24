@@ -1,3 +1,4 @@
+#Wait a moment for the video to open...
 import cv2
 from cvzone.HandTrackingModule import HandDetector
 import cvzone
