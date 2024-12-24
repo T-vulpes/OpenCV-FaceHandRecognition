@@ -98,27 +98,24 @@ def process_quiz():
         if frame is not None:
             img = frame.copy()
 
-            if qno < qtotal:  # Sorular devam ediyorsa
+            if qno < qtotal: 
                 msq = quiz_list[qno]
 
-                # Soruyu ve şıkları ekrana yazdır
                 img, _ = cvzone.putTextRect(img, f"Question {qno + 1}/{qtotal}: {msq.question}", [50, 50], 2, 2, offset=50, border=2, colorR=(50, 50, 150), colorB=(0, 0, 0), colorT=(255, 255, 255))
                 img, bbox1 = cvzone.putTextRect(img, msq.choice1, [50, 200], 2, 2, offset=20, border=2, colorB=msq.color_boxes[0], colorR=(50, 50, 150))
                 img, bbox2 = cvzone.putTextRect(img, msq.choice2, [50, 300], 2, 2, offset=20, border=2, colorB=msq.color_boxes[1], colorR=(50, 50, 150))
                 img, bbox3 = cvzone.putTextRect(img, msq.choice3, [50, 400], 2, 2, offset=20, border=2, colorB=msq.color_boxes[2], colorR=(50, 50, 150))
                 img, bbox4 = cvzone.putTextRect(img, msq.choice4, [50, 500], 2, 2, offset=20, border=2, colorB=msq.color_boxes[3], colorR=(50, 50, 150))
 
-                # Skoru yazdır
                 img, _ = cvzone.putTextRect(img, f"Score: {score}", [900, 100], 2, 2, offset=10, border=2, colorB=(0, 0, 0), colorR=(50, 50, 150))
 
-                # El algılama ve şık seçimi
                 if current_hand and time.time() - last_interaction > debounce_time:
                     if not msq.answered:  # Soru daha önce cevaplanmamışsa
                         if msq.update(current_hand, [bbox1, bbox2, bbox3, bbox4]):
                             last_interaction = time.time()
                             if msq.useransw == msq.get_answer_index():
                                 score += 1
-                            qno += 1  # Sonraki soruya geç
+                            qno += 1  
 
             else:  # Tüm sorular bittiğinde
                 img, _ = cvzone.putTextRect(img, "Game Over", [400, 300], 3, 3, offset=30, border=5, colorB=(0, 0, 255), colorR=(50, 50, 150))
