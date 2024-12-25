@@ -6,17 +6,13 @@ cap = cv2.VideoCapture(0)
 cap.set(3, 1280)
 cap.set(4, 720)
 
-# Variables for dynamic zoom and rotate
 cx, cy = 500, 500
 scale = 0
 angle = 0
 startDist = None
 startAngle = None
 
-# Initialize hand detector
 detector = HandDetector(detectionCon=0.8)
-
-# Load the image
 image = cv2.imread("image.jpg")
 
 while True:
@@ -31,7 +27,6 @@ while True:
         point1 = lmList1[8][:2]  # Index finger tip of hand 1
         point2 = lmList2[8][:2]  # Index finger tip of hand 2
 
-        # Calculate distance and angle between index fingers
         if startDist is None:
             length, info, img = detector.findDistance(point1, point2, img)
             startDist = length
