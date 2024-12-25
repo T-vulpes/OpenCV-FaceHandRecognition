@@ -21,11 +21,11 @@ while True:
     hands, img = detector.findHands(img)
 
     if len(hands) == 2:
-        lmList1 = hands[0]["lmList"]  # Landmarks for hand 1
-        lmList2 = hands[1]["lmList"]  # Landmarks for hand 2
+        lmList1 = hands[0]["lmList"] 
+        lmList2 = hands[1]["lmList"]  
 
-        point1 = lmList1[8][:2]  # Index finger tip of hand 1
-        point2 = lmList2[8][:2]  # Index finger tip of hand 2
+        point1 = lmList1[8][:2]  
+        point2 = lmList2[8][:2]  
 
         if startDist is None:
             length, info, img = detector.findDistance(point1, point2, img)
@@ -54,7 +54,6 @@ while True:
     M = cv2.getRotationMatrix2D((newW // 2, newH // 2), angle, 1)
     rotated_image = cv2.warpAffine(resized_image, M, (newW, newH))
 
-    # Overlay the image on the webcam feed
     try:
         img[cy - newH // 2:cy + newH // 2, cx - newW // 2:cx + newW // 2] = rotated_image
     except ValueError:
