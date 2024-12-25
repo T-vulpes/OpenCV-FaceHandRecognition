@@ -37,7 +37,6 @@ while True:
         length, info, img = detector.findDistance(point1, point2, img)
         currentAngle = np.arctan2(point2[1] - point1[1], point2[0] - point1[0])
 
-        # Calculate scale and rotation angle
         scale = int((length - startDist) // 2)
         angle = int(np.degrees(currentAngle - startAngle))
 
@@ -58,7 +57,6 @@ while True:
         pass
 
     cv2.imshow("Image", img)
-
     if cv2.waitKey(1) & 0xFF == ord('t'):
         break
 
