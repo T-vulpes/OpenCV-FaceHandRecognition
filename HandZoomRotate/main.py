@@ -41,18 +41,14 @@ while True:
         scale = int((length - startDist) // 2)
         angle = int(np.degrees(currentAngle - startAngle))
 
-        # Update position based on midpoint
         cx, cy = info[4:]
     else:
         startDist = None
         startAngle = None
 
-    # Resize and rotate the image
-    h1, w1, _ = image.shape
+    h1, w1, _ = image.shae
     newH, newW = max(((h1 + scale) // 2) * 2, 1), max(((w1 + scale) // 2) * 2, 1)
     resized_image = cv2.resize(image, (newW, newH))
-    
-    # Rotation matrix
     M = cv2.getRotationMatrix2D((newW // 2, newH // 2), angle, 1)
     rotated_image = cv2.warpAffine(resized_image, M, (newW, newH))
 
