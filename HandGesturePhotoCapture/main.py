@@ -28,13 +28,11 @@ while True:
         for hand_landmarks in result.multi_hand_landmarks:
             mp_drawing.draw_landmarks(img, hand_landmarks, mp_hands.HAND_CONNECTIONS)
     
-    # Başlama koşulu: El bir kez gösterildiyse ve sonra kaybolduysa
     if hand_shown_once and not hand_detected:
         if not countdown_active:
             countdown_start = time.time()
             countdown_active = True
 
-    # Countdown logic
     if countdown_active:
         elapsed = time.time() - countdown_start
         countdown = int(3 - elapsed)
