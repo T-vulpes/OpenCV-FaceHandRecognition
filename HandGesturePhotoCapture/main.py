@@ -19,14 +19,12 @@ while True:
     
     img = cv2.flip(img, 1)
     rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
-    
-    # Hand detection
     result = hands.process(rgb)
     hand_detected = False
     
     if result.multi_hand_landmarks:
         hand_detected = True
-        hand_shown_once = True  # El bir kez gösterildi
+        hand_shown_once = True 
         for hand_landmarks in result.multi_hand_landmarks:
             mp_drawing.draw_landmarks(img, hand_landmarks, mp_hands.HAND_CONNECTIONS)
     
