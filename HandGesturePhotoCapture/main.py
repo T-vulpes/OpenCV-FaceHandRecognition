@@ -1,3 +1,5 @@
+#After the hand is detected and removed from the view, a 3-second countdown begins, and the photo is taken automatically.
+
 import cv2
 import mediapipe as mp
 import time
@@ -47,7 +49,7 @@ while True:
 
     cv2.imshow("Hand Detection", img)
     key = cv2.waitKey(1)
-    if key == 27:  # ESC key to exit
+    if key == 27:  
         break
 
 cap.release()
