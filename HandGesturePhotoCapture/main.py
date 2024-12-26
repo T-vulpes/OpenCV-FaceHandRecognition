@@ -3,7 +3,6 @@ import mediapipe as mp
 import time
 from playsound import playsound
 
-# Mediapipe Hand Detection
 mp_hands = mp.solutions.hands
 hands = mp_hands.Hands(max_num_hands=1, min_detection_confidence=0.7)
 mp_drawing = mp.solutions.drawing_utils
@@ -11,7 +10,7 @@ mp_drawing = mp.solutions.drawing_utils
 cap = cv2.VideoCapture(0)
 countdown_start = 0
 countdown_active = False
-hand_shown_once = False  # Elin bir kez gösterilip gösterilmediğini takip eder
+hand_shown_once = False  
 
 while True:
     ret, img = cap.read()
