@@ -43,9 +43,8 @@ while True:
             cv2.imwrite("selfie.jpg", img)
             playsound("effect.mp3")
             countdown_active = False
-            hand_shown_once = False  # Tekrar işlem yapılması için resetlenir
+            hand_shown_once = False  
 
-    # Display the image
     cv2.imshow("Hand Detection", img)
     key = cv2.waitKey(1)
     if key == 27:  # ESC key to exit
