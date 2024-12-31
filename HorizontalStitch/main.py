@@ -2,11 +2,9 @@ import cv2
 import numpy as np
 
 def combine_images_horizontally(images):
-    """Görüntüleri yatay olarak birleştirir."""
     return np.hstack(images)
 
 def main():
-    # Görüntü dosyalarını yükleme
     image1_path = 'Images/1.jpg'
     image2_path = 'Images/2.jpg'
     image1 = cv2.imread(image1_path)
