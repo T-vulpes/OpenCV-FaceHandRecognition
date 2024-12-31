@@ -10,7 +10,6 @@ def main():
     image1 = cv2.imread(image1_path)
     image2 = cv2.imread(image2_path)
     
-    # Görüntülerin başarıyla yüklenip yüklenmediğini kontrol et
     if image1 is None:
         print(f"Görüntü yüklenemedi: {image1_path}")
         return
