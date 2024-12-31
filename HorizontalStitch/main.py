@@ -23,9 +23,7 @@ def main():
     resized_image2 = cv2.resize(image2, (width, height))
 
     combined_horizontal = combine_images_horizontally([resized_image1, resized_image2])
-
     cv2.imwrite("combined_horizontal.jpg", combined_horizontal)
-
     cv2.imshow("Horizontal Combination", combined_horizontal)
     cv2.waitKey(0)
     cv2.destroyAllWindows()
