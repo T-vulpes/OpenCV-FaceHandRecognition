@@ -1,0 +1,40 @@
+import cv2
+import numpy as np
+
+def combine_images_horizontally(images):
+    """Görüntüleri yatay olarak birleştirir."""
+    return np.hstack(images)
+
+def main():
+    # Görüntü dosyalarını yükleme
+    image1_path = 'Images/1.jpg'
+    image2_path = 'Images/2.jpg'
+    image1 = cv2.imread(image1_path)
+    image2 = cv2.imread(image2_path)
+    
+    # Görüntülerin başarıyla yüklenip yüklenmediğini kontrol et
+    if image1 is None:
+        print(f"Görüntü yüklenemedi: {image1_path}")
+        return
+    if image2 is None:
+        print(f"Görüntü yüklenemedi: {image2_path}")
+        return
+
+    # Görüntülerin boyutlarını eşitle
+    height = max(image1.shape[0], image2.shape[0])
+    width = max(image1.shape[1], image2.shape[1])
+    resized_image1 = cv2.resize(image1, (width, height))
+    resized_image2 = cv2.resize(image2, (width, height))
+
+    # Görüntüleri yatay olarak birleştir
+    combined_horizontal = combine_images_horizontally([resized_image1, resized_image2])
+
+    # Sonuçları kaydet ve göster
+    cv2.imwrite("combined_horizontal.jpg", combined_horizontal)
+
+    cv2.imshow("Horizontal Combination", combined_horizontal)
+    cv2.waitKey(0)
+    cv2.destroyAllWindows()
+
+if __name__ == "__main__":
+    main()
