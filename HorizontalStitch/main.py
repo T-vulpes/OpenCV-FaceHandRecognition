@@ -11,10 +11,10 @@ def main():
     image2 = cv2.imread(image2_path)
     
     if image1 is None:
-        print(f"Görüntü yüklenemedi: {image1_path}")
+        print(f"Image could not be loaded: {image1_path}")
         return
     if image2 is None:
-        print(f"Görüntü yüklenemedi: {image2_path}")
+        print(f"Image could not be loaded: {image2_path}")
         return
 
     height = max(image1.shape[0], image2.shape[0])
