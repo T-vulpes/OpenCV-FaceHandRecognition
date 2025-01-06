@@ -10,18 +10,13 @@ turk_alphabet = [
 labels_path = "labels.txt"
 with open(labels_path, 'r') as labelsfile:
     classes = [line.strip().split(' ', 1)[-1] for line in labelsfile.readlines()]
-
-# Türk alfabesi harflerini mevcut sınıflara ekle (isteğe bağlı)
 if len(classes) < len(turk_alphabet):
     classes = turk_alphabet
 
-print("Sınıflar:", classes)
-
-# Teachable Machine modelini yükle
+print("Classes:", classes)
 model_path = "keras_model.h5"
 model = load_model(model_path, compile=False)
 
-# Modelin çıkış boyutunu kontrol et
 output_size = model.output_shape[1]
 if len(classes) != output_size:
     print(f"UYARI: Model {output_size} sınıf için eğitildi, ancak {len(classes)} sınıf verildi.")
