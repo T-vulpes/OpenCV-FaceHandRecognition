@@ -60,11 +60,10 @@ while True:
     # Tahmin edilen sınıfı çerçeveye yaz
     threshold = 50  # Güven skoru eşiği (daha düşük ayarlanabilir)
     if confidence > threshold:
-        text = f"Tahmin: {predicted_label} (%{int(confidence)})"
+        text = f"Guess: {predicted_label} (%{int(confidence)})"
     else:
-        text = "Yetersiz güven skoru"
+        text = "Insufficient trust score"
 
-    # Çerçeveye tahmin sonucunu yaz
     cv2.putText(
         img=square_frame,
         text=text,
