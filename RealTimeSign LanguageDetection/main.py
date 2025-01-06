@@ -2,16 +2,13 @@ import numpy as np
 import cv2
 from tensorflow.keras.models import load_model
 
-# Türk alfabesi (ğ, ş, ö, ü hariç)
 turk_alphabet = [
     "a", "b", "c", "d", "e", "f", "g", "h", "ı", "i", "j", "k", "l", "m",
     "n", "o", "p", "r", "s", "t", "u", "v", "y", "z"
 ]
 
-# Etiketleri labels.txt dosyasından oku
 labels_path = "labels.txt"
 with open(labels_path, 'r') as labelsfile:
-    # Dosyadaki sınıfları oku ve listeye ekle
     classes = [line.strip().split(' ', 1)[-1] for line in labelsfile.readlines()]
 
 # Türk alfabesi harflerini mevcut sınıflara ekle (isteğe bağlı)
