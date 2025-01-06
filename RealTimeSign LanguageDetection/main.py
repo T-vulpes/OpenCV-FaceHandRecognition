@@ -32,33 +32,27 @@ cap.set(cv2.CAP_PROP_GAIN, 0)
 while True:
     ret, frame = cap.read()
     if not ret:
-        print("Kamera görüntüsü alınamadı!")
+        print("Could not get camera image!")
         break
 
     frame = cv2.flip(frame, 1)  
     margin = int((frameWidth - frameHeight) / 2)
     square_frame = frame[0:frameHeight, margin:margin + frameHeight]
 
-    # Model için boyutlandır ve renk düzenini değiştir
     resized_img = cv2.resize(square_frame, (224, 224))
     model_img = cv2.cvtColor(resized_img, cv2.COLOR_BGR2RGB)
-
-    # Numpy array'e dönüştür ve normalize et
     image_array = np.asarray(model_img)
     normalized_image_array = (image_array.astype(np.float32) / 127.0) - 1
 
-    # Veriyi modele uygun forma getir
     data = np.ndarray(shape=(1, 224, 224, 3), dtype=np.float32)
     data[0] = normalized_image_array
 
-    # Tahmin yap
     predictions = model.predict(data)
     confidence = np.max(predictions[0]) * 100
     predicted_index = np.argmax(predictions[0])
     predicted_label = classes[predicted_index]
 
-    # Tahmin edilen sınıfı çerçeveye yaz
-    threshold = 50  # Güven skoru eşiği (daha düşük ayarlanabilir)
+    threshold = 50 
     if confidence > threshold:
         text = f"Guess: {predicted_label} (%{int(confidence)})"
     else:
