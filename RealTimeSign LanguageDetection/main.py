@@ -22,10 +22,7 @@ if len(classes) != output_size:
     print(f"UYARI: Model {output_size} sınıf için eğitildi, ancak {len(classes)} sınıf verildi.")
     classes = classes[:output_size]  # Sınıfları model boyutuna göre kes
 
-# Kamerayı başlat
 cap = cv2.VideoCapture(0)
-
-# Kamera çözünürlüğü ayarları
 frameWidth = 1280
 frameHeight = 720
 cap.set(cv2.CAP_PROP_FRAME_WIDTH, frameWidth)
@@ -33,15 +30,12 @@ cap.set(cv2.CAP_PROP_FRAME_HEIGHT, frameHeight)
 cap.set(cv2.CAP_PROP_GAIN, 0)
 
 while True:
-    # Görüntü yakalama
     ret, frame = cap.read()
     if not ret:
         print("Kamera görüntüsü alınamadı!")
         break
 
-    frame = cv2.flip(frame, 1)  # Sağ-sol tersliği düzelt
-
-    # Kareyi kare biçimine kırp
+    frame = cv2.flip(frame, 1)  
     margin = int((frameWidth - frameHeight) / 2)
     square_frame = frame[0:frameHeight, margin:margin + frameHeight]
 
