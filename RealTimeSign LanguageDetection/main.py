@@ -19,7 +19,7 @@ model = load_model(model_path, compile=False)
 
 output_size = model.output_shape[1]
 if len(classes) != output_size:
-    print(f"UYARI: Model {output_size} sınıf için eğitildi, ancak {len(classes)} sınıf verildi.")
+    print(f"WARNING: Model trained for {output_size} classes, but given {len(classes)} classes.")
     classes = classes[:output_size]  
 
 cap = cv2.VideoCapture(0)
