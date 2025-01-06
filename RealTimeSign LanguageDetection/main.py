@@ -86,13 +86,9 @@ while True:
         thickness=2
     )
 
-    # Çerçeveyi göster
-    cv2.imshow('Webcam Görüntüsü', square_frame)
-
-    # Çıkmak için 'q' tuşuna bas
-    if cv2.waitKey(1) & 0xFF == ord('q'):
+    cv2.imshow('Webcam View', square_frame)
+    if cv2.waitKey(1) & 0xFF == ord('x'):
         break
 
-# Kaynakları serbest bırak
 cap.release()
 cv2.destroyAllWindows()
