@@ -20,7 +20,7 @@ model = load_model(model_path, compile=False)
 output_size = model.output_shape[1]
 if len(classes) != output_size:
     print(f"UYARI: Model {output_size} sınıf için eğitildi, ancak {len(classes)} sınıf verildi.")
-    classes = classes[:output_size]  # Sınıfları model boyutuna göre kes
+    classes = classes[:output_size]  
 
 cap = cv2.VideoCapture(0)
 frameWidth = 1280
