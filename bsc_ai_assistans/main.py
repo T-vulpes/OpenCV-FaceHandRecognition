@@ -4,7 +4,6 @@ import wikipedia
 import pywhatkit
 import speech_recognition as sr
 
-# Sesli yanıtlar için yapılandırma
 def speak(command):
     engine = pyttsx3.init()
     voices = engine.getProperty('voices')
@@ -12,7 +11,6 @@ def speak(command):
     engine.say(command)
     engine.runAndWait()
 
-# Sesli komutlar için yapılandırma
 def commands():
     r = sr.Recognizer()
     phonenumbers = {"gabi": "123456790", "zehra": "1111", "thomas": "222"}
