@@ -59,7 +59,6 @@ def commands():
                                 speak("An error occurred while fetching information from Wikipedia.")
                                 print(f"Error: {e}")
 
-            # Telefon numarası
             elif 'phone number' in mytext:
                 for name in phonenumbers:
                     if name in mytext:
@@ -68,7 +67,6 @@ def commands():
                 else:
                     speak("No matching phone number found.")
 
-            # Banka hesap numarası
             elif "account number" in mytext:
                 for bankname in bankaccount:
                     if bankname in mytext:
