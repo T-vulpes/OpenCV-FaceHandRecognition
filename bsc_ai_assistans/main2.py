@@ -78,9 +78,8 @@ def commands(commands_dict):
                     speak(response)
                     return True
 
-            # Eğer eşleşen bir komut bulunamazsa
             speak("I didn't understand that. Can you please repeat?")
-        return True  # Döngüyü devam ettir
+        return True 
     except sr.UnknownValueError:
         speak("I didn't catch that. Please try again.")
     except sr.RequestError as e:
@@ -88,12 +87,11 @@ def commands(commands_dict):
     except Exception as e:
         print(f"An error occurred: {e}")
         speak("An error occurred. Please try again.")
-    return True  # Döngüyü devam ettir
+    return True  
 
-# Ana döngü
 speak("Welcome to the voice assistant!")
 commands_dict = load_commands_from_csv('commands2.csv')
 
 while True:
-    if not commands(commands_dict):  # Döngüyü 'False' döndürerek sonlandır
+    if not commands(commands_dict):  
         break
