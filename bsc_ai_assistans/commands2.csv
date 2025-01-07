@@ -1,0 +1,26 @@
+command,response
+hello,Hello! How can I assist you today?
+how are you,I'm doing well thank you! How about you?
+what is your name,I'm your personal assistant. You can call me VoiceBot!
+what can you do,I can help you with tasks like calculations, searching information, playing songs, and more!
+what is the time,The current time is {time}.
+what is the date,Today's date is {date}.
+play,Playing {song} on YouTube.
+search for,Sure, let me search for information about {query}.
+who is,Sure, let me fetch some information about {query} from Wikipedia.
+calculate 2 + 2,The result is 4.
+calculate 10 / 2,The result is 5.
+calculate 5 * 3,The result is 15.
+tell me a joke,Why don't skeletons fight each other? They don't have the guts!
+give me advice,Always be kind and stay curious!
+open YouTube,Sure, opening YouTube now.
+what's the weather like,Let me check the weather in your location.
+how old are you,I'm as old as the lines of code that created me!
+what's the capital of France,The capital of France is Paris.
+convert 100 dollars to euros,Let me fetch the latest exchange rates for you.
+exit,Goodbye! Have a great day!
+how do I bake a cake,Preheat your oven, mix the ingredients, and bake until golden brown!
+what is Python,Python is a high-level programming language used for many applications.
+how do I stay motivated,Set clear goals and celebrate small achievements along the way!
+recommend a movie,How about 'Inception'? It's a great watch!
+can you tell me a fun fact,Did you know that honey never spoils? Archaeologists found 3000-year-old honey that was still edible!
