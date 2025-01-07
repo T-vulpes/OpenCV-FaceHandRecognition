@@ -27,7 +27,6 @@ def replace_placeholders(response):
         response = response.replace("{time}", datetime.now().strftime("%I:%M %p"))
     return response
 
-# Matematik işlemini çöz
 def calculate_expression(expression):
     try:
         result = eval(expression)
@@ -35,10 +34,8 @@ def calculate_expression(expression):
     except Exception as e:
         return "I couldn't calculate that. Please try again."
 
-# Sesli komutlar için yapılandırma
 def commands(commands_dict):
     r = sr.Recognizer()
-
     try:
         with sr.Microphone() as source:
             r.adjust_for_ambient_noise(source)
