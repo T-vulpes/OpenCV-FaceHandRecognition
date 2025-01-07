@@ -7,7 +7,7 @@ import speech_recognition as sr
 def speak(command):
     engine = pyttsx3.init()
     voices = engine.getProperty('voices')
-    engine.setProperty('voice', voices[0].id)  # Erkek sesi için [0], kadın sesi için [1]
+    engine.setProperty('voice', voices[0].id)  
     engine.say(command)
     engine.runAndWait()
 
@@ -26,11 +26,9 @@ def commands():
 
             print(f"Recognized: {mytext}")
 
-            # Selamlaşma
             if "hello" in mytext and "how are you" in mytext:
                 speak("I'm fine, thank you! How can I assist you today?")
 
-            # Şarkı çalma
             elif 'play' in mytext:
                 mytext = mytext.replace('play', '')
                 song_name = mytext.strip()
@@ -38,25 +36,22 @@ def commands():
                 speak(f"Searching for {song_name}")
                 pywhatkit.playonyt(specific_search)
 
-            # Tarih
             elif 'date' in mytext:
                 today = datetime.date.today()
                 speak(f"Today's date is {today}")
 
-            # Saat
             elif 'time' in mytext:
                 time = datetime.datetime.now().strftime('%H:%M')
                 speak(f"The time is {time}")
 
-                        # Wikipedia bilgisi
             if 'who is' in mytext:
                             person = mytext.replace('who is', '').strip()
                             try:
-                                wikipedia.set_lang("en")  # İngilizce dilde arama yap
+                                wikipedia.set_lang("en")  
                                 info = wikipedia.summary(person, sentences=2)
                                 speak(info)
                             except wikipedia.exceptions.DisambiguationError as e:
-                                options = ', '.join(e.options[:5])  # İlk 5 seçeneği listele
+                                options = ', '.join(e.options[:5]) 
                                 speak(f"There are multiple results for {person}. Did you mean: {options}?")
                             except wikipedia.exceptions.PageError:
                                 speak(f"I couldn't find any information about {person}. Please try a different query.")
