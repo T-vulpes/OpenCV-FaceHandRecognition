@@ -5,15 +5,13 @@ import csv
 import re
 import webbrowser
 
-# Sesli yanıtlar için yapılandırma
 def speak(command):
     engine = pyttsx3.init()
     voices = engine.getProperty('voices')
-    engine.setProperty('voice', voices[0].id)  # Erkek sesi için [0], kadın sesi için [1]
+    engine.setProperty('voice', voices[0].id)  
     engine.say(command)
     engine.runAndWait()
 
-# CSV'den komutları ve cevapları yükleme
 def load_commands_from_csv(file_path):
     commands_dict = {}
     with open(file_path, 'r') as csvfile:
@@ -22,7 +20,6 @@ def load_commands_from_csv(file_path):
             commands_dict[row['command']] = row['response']
     return commands_dict
 
-# Tarih ve saat bilgisi ekleme
 def replace_placeholders(response):
     if "{date}" in response:
         response = response.replace("{date}", datetime.now().strftime("%B %d, %Y"))
