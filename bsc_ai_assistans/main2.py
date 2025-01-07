@@ -49,7 +49,6 @@ def commands(commands_dict):
             for command, response in commands_dict.items():
                 if command in mytext:
                     if '{calculate}' in response:
-                        # Dinamik hesaplama
                         calculation = re.search(r'(\d+[\+\-\*/]\d+)', mytext)
                         if calculation:
                             result = calculate_expression(calculation.group())
