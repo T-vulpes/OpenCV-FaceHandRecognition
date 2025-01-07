@@ -82,12 +82,11 @@ def commands():
                 else:
                     speak("No matching bank account found.")
 
-            # Çıkış komutu
             elif 'exit' in mytext or 'quit' in mytext:
                 speak("Exiting the program. Goodbye!")
-                return False  # Döngüyü sonlandır
+                return False  
 
-        return True  # Döngüyü devam ettir
+        return True  
     except sr.UnknownValueError:
         speak("I didn't catch that. Please try again.")
     except sr.RequestError as e:
@@ -95,10 +94,9 @@ def commands():
     except Exception as e:
         print(f"An error occurred: {e}")
         speak("An error occurred. Please try again.")
-    return True  # Döngüyü devam ettir
+    return True  
 
-# Ana döngü
 speak("Welcome to the voice assistant!")
 while True:
-    if not commands():  # Döngüyü 'False' döndürerek sonlandır
+    if not commands():  
         break
