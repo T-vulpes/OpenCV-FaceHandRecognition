@@ -60,7 +60,6 @@ def commands(commands_dict):
                         else:
                             response = "I couldn't understand the calculation. Please try again."
                     elif '{query}' in response:
-                        # Dinamik arama
                         query = mytext.replace(command, "").strip()
                         response = response.replace("{query}", query)
                         if "search" in command:
@@ -68,13 +67,11 @@ def commands(commands_dict):
                         elif "who is" in command:
                             webbrowser.open(f"https://en.wikipedia.org/wiki/{query}")
                     elif "play" in command:
-                        # Şarkı oynatma
                         song = mytext.replace("play", "").strip()
                         webbrowser.open(f"https://www.youtube.com/results?search_query={song}")
                         response = f"Playing {song} on YouTube."
                     else:
                         response = replace_placeholders(response)
-
                     speak(response)
                     return True
 
