@@ -28,7 +28,6 @@ while True:
             eye_center_x = x + ex + ew // 2
             eye_center_y = y + ey + eh // 2
 
-            # Koordinatları ekrana uygun şekilde dönüştür
             mouse_x = int(screen_width / frame.shape[1] * eye_center_x)
             mouse_y = int(screen_height / frame.shape[0] * eye_center_y)
 
