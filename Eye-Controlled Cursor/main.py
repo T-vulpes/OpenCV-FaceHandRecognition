@@ -49,19 +49,12 @@ while True:
             if abs(smooth_x - previous_mouse_x) > THRESHOLD or abs(smooth_y - previous_mouse_y) > THRESHOLD:
                 pyautogui.moveTo(smooth_x, smooth_y, duration=0.1)
 
-            # Yeni koordinatları kaydet
             previous_mouse_x, previous_mouse_y = smooth_x, smooth_y
-
-            # Göz çevresine dikdörtgen çiz
             cv2.rectangle(roi_color, (ex, ey), (ex + ew, ey + eh), (255, 0, 0), 2)
 
-    # Görüntüyü ekranda göster
     cv2.imshow("Eye-Controlled Cursor", frame)
-
-    # ESC tuşu ile çıkış
     if cv2.waitKey(1) & 0xFF == 27:
         break
 
-# Kaynakları serbest bırak
 cam.release()
 cv2.destroyAllWindows()
