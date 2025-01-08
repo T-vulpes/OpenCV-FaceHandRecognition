@@ -5,10 +5,7 @@ face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_fronta
 eye_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_eye.xml')
 cam = cv2.VideoCapture(0)
 
-# Ekran boyutlarını al
 screen_width, screen_height = pyautogui.size()
-
-# Önceki koordinatları takip etmek için değişkenler
 previous_mouse_x, previous_mouse_y = 0, 0
 
 THRESHOLD = 15
@@ -22,7 +19,6 @@ while True:
 
     faces = face_cascade.detectMultiScale(gray, scaleFactor=1.3, minNeighbors=5)
     for (x, y, w, h) in faces:
-        # Göz bölgesine odaklan (yalnızca üst yarı)
         roi_gray = gray[y:y + h // 2, x:x + w]
         roi_color = frame[y:y + h // 2, x:x + w]
 
@@ -36,11 +32,9 @@ while True:
             mouse_x = int(screen_width / frame.shape[1] * eye_center_x)
             mouse_y = int(screen_height / frame.shape[0] * eye_center_y)
 
-            # Hareketi yumuşat (smoothing)
             smooth_x = int(0.7 * previous_mouse_x + 0.3 * mouse_x)
             smooth_y = int(0.7 * previous_mouse_y + 0.3 * mouse_y)
 
-            # Hareketi eşik değerine göre kontrol et
             if abs(smooth_x - previous_mouse_x) > THRESHOLD or abs(smooth_y - previous_mouse_y) > THRESHOLD:
                 pyautogui.moveTo(smooth_x, smooth_y, duration=0.1)
 
