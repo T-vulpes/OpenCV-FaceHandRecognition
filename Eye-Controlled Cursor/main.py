@@ -24,7 +24,7 @@ while True:
 
         eyes = eye_cascade.detectMultiScale(roi_gray, scaleFactor=1.1, minNeighbors=4)
         for (ex, ey, ew, eh) in eyes:
-            # Gözün merkezi
+            # Gözün merkezi-Center of the eye
             eye_center_x = x + ex + ew // 2
             eye_center_y = y + ey + eh // 2
 
