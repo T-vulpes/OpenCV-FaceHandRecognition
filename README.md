@@ -1,1 +1,2 @@
-# OpenCV-FaceHandRecognition
+# OpenCV Projects
+#
