@@ -17,7 +17,6 @@ with mp_face_mesh.FaceMesh(min_detection_confidence=0.5, min_tracking_confidence
                 for landmark in face_landmarks.landmark:
                     h, w, _ = frame.shape
                     x, y = int(landmark.x * w), int(landmark.y * h)
-                    # Noktalara daire çiz
                     cv2.circle(frame, (x, y), 1, (0, 0, 255), -1)
         
         cv2.imshow("Frame", frame)
