@@ -107,7 +107,6 @@ def process_quiz():
                             if msq.useransw == msq.get_answer_index():
                                 score += 1
                             qno += 1  
-
             else:  
                 img, _ = cvzone.putTextRect(img, "Game Over", [400, 300], 3, 3, offset=30, border=5, colorB=(0, 0, 255), colorR=(50, 50, 150))
                 img, _ = cvzone.putTextRect(img, f"Your Score: {score}/{qtotal}", [400, 400], 2, 2, offset=20, border=3, colorB=(0, 0, 0), colorR=(50, 50, 150))
