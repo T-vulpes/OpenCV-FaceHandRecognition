@@ -65,7 +65,6 @@ def main():
 
         if cv2.waitKey(int(1000 / fps)) & 0xFF == ord('q'):
             break
-
     cap.release()
     cv2.destroyAllWindows()
 
