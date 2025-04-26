@@ -1,5 +1,4 @@
 #Wait for the camera to open...
-
 import cv2
 import time
 import winsound
@@ -21,7 +20,6 @@ while True:
         winsound.Beep(500, 100)
 
     cv2.imshow("Camera", thresh)
-
     if cv2.waitKey(10) == ord('t'):  # 'T'
         break
 
