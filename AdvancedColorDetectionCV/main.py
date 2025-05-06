@@ -30,7 +30,6 @@ def process_frame(color_name, colors, frame, image_hsv):
             x, y, w, h = cv2.boundingRect(contour)
             cv2.rectangle(frame, (x, y), (x + w, y + h), bgr_value, 2)
             cv2.putText(frame, color_name, (x, y - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.6, bgr_value, 2)
-
     return frame
 
 colors = {
