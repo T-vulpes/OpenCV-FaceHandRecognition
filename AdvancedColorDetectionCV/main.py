@@ -1,5 +1,4 @@
 #Wait a moment for the camera to turn on.
-
 import cv2
 import numpy as np
 from tkinter import Tk, Button
