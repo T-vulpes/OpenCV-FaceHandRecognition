@@ -134,6 +134,5 @@ if __name__ == "__main__":
     
     obj_thread.start()
     cam_thread.start()
-    
     obj_thread.join()
     cam_thread.join()
