@@ -3,7 +3,6 @@ import numpy as np
 
 def combine_images_horizontally(images):
     return np.hstack(images)
-
 def main():
     image1_path = 'Images/1.jpg'
     image2_path = 'Images/2.jpg'
