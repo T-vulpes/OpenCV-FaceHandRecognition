@@ -4,7 +4,6 @@ import time
 import winsound
 
 cam = cv2.VideoCapture(0)
-
 while True:
     _, im = cam.read()
     _, im2 = cam.read()
