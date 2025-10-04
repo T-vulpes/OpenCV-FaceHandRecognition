@@ -102,8 +102,9 @@ while True:
         speedX, speedY = 15, 15
         gameOver = False
         score = [0, 0]
-    if key == ord('t'):  # close
+    if key == ord('t'):  # Close
         break
 
 cap.release()
 cv2.destroyAllWindows()
+
