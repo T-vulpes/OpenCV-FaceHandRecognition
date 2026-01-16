@@ -1,4 +1,4 @@
-#Wait a moment for the camera to turn on.
+#Wait a moment for the camera to turn on...
 import cv2
 import numpy as np
 from tkinter import Tk, Button
@@ -76,3 +76,4 @@ root.after(0, video_loop)
 root.mainloop()
 video.release()
 cv2.destroyAllWindows()
+
